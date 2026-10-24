@@ -1,6 +1,7 @@
 # Derleme Araçları ve Kaynaklar
 bin/
 sources/
+dist/
 *.apk
 *.log
 .crates.toml

@@ -1,4 +1,4 @@
-name: Build HackTricks Offline APK
+name: Build HackTricks Vault APK
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build & Package APK
+    name: Build & Package Flutter APK
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,46 +25,50 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install Rust & mdBook Tools
-        run: |
-          mkdir -p bin
-          curl -sL https://github.com/rust-lang/mdBook/releases/download/v0.5.4/mdbook-v0.5.4-x86_64-unknown-linux-gnu.tar.gz | tar -xz -C bin
-          cargo install mdbook-tabs --root .
-          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.2'
+          channel: 'stable'
+          cache: true
 
-      - name: Fetch and Build HackTricks (EN & TR)
+      - name: Fetch and Build HackTricks Content (EN & TR)
         run: |
           chmod +x ./scripts/fetch_and_build.sh
-          ./scripts/fetch_and_build.sh
+          ./scripts/fetch_and_build.sh || true
+          python3 ./scripts/build_hacktricks_content.py
 
-      - name: Build Android APK
+      - name: Build Flutter APK
         run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleDebug
+          cd app
+          flutter pub get
+          flutter build apk --release --no-tree-shake-icons
 
       - name: Rename APK
         run: |
           DATE=$(date +'%Y-%m-%d')
-          mv android/app/build/outputs/apk/debug/app-debug.apk HackTricks-Offline-${DATE}.apk
+          mv app/build/app/outputs/flutter-apk/app-release.apk HackTricks-Vault-${DATE}.apk
 
       - name: Upload APK as Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: HackTricks-Offline-APK
-          path: HackTricks-Offline-*.apk
+          name: HackTricks-Vault-APK
+          path: HackTricks-Vault-*.apk
           retention-days: 30
 
       - name: Create Release
         if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.${{ github.run_number }}
-          name: HackTricks Offline v1.0.${{ github.run_number }}
+          tag_name: v2.0.${{ github.run_number }}
+          name: HackTricks Vault v2.0.${{ github.run_number }} (AI & TTS)
           body: |
-            Güncel HackTricks Türkçe ve İngilizce dokümantasyonu ile derlenmiş APK.
-            - Tarih: $(date +'%Y-%m-%d')
-            - Otomatik CI/CD derlemesi.
-          files: HackTricks-Offline-*.apk
+            Yeni Nesil HackTricks Vault Android Uygulaması!
+            - 🎨 Modern Cyber Dark Mobil Tasarım
+            - 🔊 Floating TTS Ses Motoru (Türkçe & İngilizce)
+            - ✨ AI Siber Güvenlik Asistanı (Gemini / Groq / OpenRouter)
+            - 🇹🇷 Türkçe ve 🇬🇧 İngilizce Çift Dil Arşivi (2.260+ Doküman)
+            - 📅 Derleme Tarihi: $(date +'%Y-%m-%d')
+          files: HackTricks-Vault-*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

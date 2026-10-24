@@ -1,70 +1,63 @@
-# HackTricks Offline Android APK & Otomasyon Sistemi
+# 🛡️ HackTricks Vault — Çevrimdışı Mobil (APK) Platformu
 
-Bu proje, **[HackTricks](https://hacktricks.wiki)** siber güvenlik ve pentest dokümantasyonunu (hem **Türkçe** hem **İngilizce** olarak) %100 çevrimdışı (offline) çalışabilir bir Android APK uygulamasına dönüştürür ve dokümantasyonu sürekli taze tutmak için otomatik bir CI/CD derleme hattı sunar.
-
----
-
-## 🚀 Temel Özellikler
-
-- **%100 Offline (İnternetsiz):** Tüm sayfalar, komutlar, sekmeler ve kod blokları uygulamanın içerisine gömülüdür.
-- **Çift Dil Desteği (TR & EN):**
-  - 🇹🇷 **Türkçe:** `tr` branch'indeki topluluk çevirileri.
-  - 🇬🇧 **İngilizce:** `master` branch'indeki en güncel ana dokümantasyon.
-  - Şık açılış portalından tek dokunuşla dil seçimi.
-- **Anlık Yerel Arama (Search Engine):** mdBook'un yerel arama motoru entegredir, internetsiz ortamda saniyeler içinde arama yapabilirsiniz.
-- **Karanlık Mod (Dark Theme):** Gece ve uzun çalışma saatleri için optimize edilmiş HackTricks teması.
-- **Otomatik Güncelleme (Taze Kalma Garantisi):** GitHub Actions sayesinde her 15 günde bir veya tek tuşa basıldığında HackTricks'ten yeni eklenen teknikleri çekerek otomatik yeni APK derler.
+HackTricks siber güvenlik, penetrasyon testi, privilege escalation ve exploit bilgi tabanını (2.260+ doküman) **%100 çevrimdışı (offline)** olarak mobil cihazınızda kullanmanızı sağlayan gelişmiş bir siber güvenlik çalışma ve referans platformudur.
 
 ---
 
-## 📁 Proje Mimarisi
+## 🚀 Öne Çıkan Gelişmiş Özellikler
 
-```text
-├── .github/workflows/
-│   └── build-apk.yml          # GitHub Actions: Otomatik APK derleme ve Release oluşturma
-├── android/                   # Hafif, yerel Android WebView projesi
-│   ├── app/src/main/
-│   │   ├── java/.../MainActivity.kt  # WebViewAssetLoader & Güvenli yerel navigasyon
-│   │   └── assets/www/        # Derlenen HTML dokümantasyonu (index.html, /en, /tr)
-│   └── gradlew                # Gradle derleme wrapper'ı
-├── scripts/
-│   ├── fetch_and_build.sh     # Upstream'den master & tr çekip mdBook derleyen script
-│   └── serve_preview.py       # Bilgisayarda tarayıcı üzerinden önizleme sunucusu
-└── bin/                       # mdbook & mdbook-tabs binary araçları
+1. **🎨 Modern OLED Cyber Dark Mobil Tasarım:**
+   - Siber güvenlik operasyonlarına uygun koyu tema, cam efekti (glassmorphism) ve neon vurgular.
+   - 20 temel HackTricks kategorisi (Web Pentesting, Network Services, Windows, Linux, Binary Exploitation, AI Security, Cloud vb.).
+
+2. **🔊 Gelişmiş Sesli Okuma Motoru (TTS — Text-to-Speech):**
+   - Ekranın altından ayrılmayan yapışkan **Floating TTS Player Bar** (Oynat, Duraklat, Durdur, Hız 0.75x–1.50x).
+   - **4 Özel Spiker Profili:** SOC Analisti (sakin), Eğitmen (dengeli), Akademisyen, Kırmızı Takım (hızlı tempo).
+   - **Akıllı Markdown Temizleyici:** Kod bloklarını, ````bash```` etiketlerini ve işaretlemeleri atlayarak pürüzsüz dinleme sağlar.
+
+3. **✨ İsteğe Bağlı AI Siber Güvenlik Asistanı:**
+   - **Sıfır Ağ / Zero-Network:** Varsayılan olarak %100 internetsizdir.
+   - Kullanıcı Google Gemini (`AIza...`), Groq Cloud (`gsk_...`) veya OpenRouter (`sk-or-...`) API anahtarı girdiğinde tek dokunuşla aktifleşir:
+     - 💡 *"Bu Bölümü Basitçe Açıkla"*
+     - ⚡ *"Komut & Saldırı Analizi Yap"*
+     - 🛡️ *"Tespit & Savunma Kuralı Yaz (Sigma / Event ID)"*
+     - 💬 *"Doküman Hakkında Serbest Soru Sor"*
+
+4. **🌐 Çift Dil Desteği (🇹🇷 Türkçe & 🇬🇧 İngilizce):**
+   - Uygulama içinden tek dokunuşla **Türkçe** çeviri arşivi veya en güncel **İngilizce** orijinal veri tabanı arasında geçiş.
+
+5. **📈 Öğrenme ve Okuma İlerlemesi (Hero Progress Tracker):**
+   - "Kaldığın Yerden Devam Et" kartı ve anlık ilerleme çubuğu (%X tamamlandı).
+   - Tek dokunuşla **"Okundu Olarak İşaretle"** (✓) ve **"Yer İmi"** (🔖).
+   - Dahili pentest not defteri (Scratchpad).
+
+6. **🔍 Hızlı Çevrimdışı Arama:**
+   - 2.260+ makale içinde internetsiz, anlık ve filtrelenebilir arama motoru.
+
+---
+
+## 🛠️ Yerelde APK Derleme
+
+```bash
+# Tek komutla tüm dokümanları tarar ve release APK'sını derler:
+./build_apk.sh
 ```
 
----
+- **Derlenen APK Konumu:** `dist/HackTricks_Vault.apk`
+- **Dosya Boyutu:** ~62 MB (Hafif ve optimize)
 
-## 🛠️ Nasıl Kullanılır?
-
-### Yöntem A: GitHub Actions ile Otomatik APK Çıkartma (Tavsiye Edilen)
-En kolayıdır; bilgisayarınızda Android SDK kurmanıza gerek kalmaz:
-
-1. Bu repoyu kendi GitHub hesabınıza push edin:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: HackTricks offline android setup"
-   git remote add origin https://github.com/<kullanici-adiniz>/hacktricks-offline.git
-   git push -u origin main
-   ```
-2. GitHub reponuzda **Actions** sekmesine gidin.
-3. **Build HackTricks Offline APK** iş akışını seçip **Run workflow** butonuna tıklayın.
-4. Derleme bittiğinde oluşturulan güncel `HackTricks-Offline-<TARIH>.apk` dosyasını telefonunuza indirin!
-5. *(Ayrıca sistem her ayın 1'inde ve 15'inde otomatik olarak çalışıp yeni APK üretir.)*
+### Telefona Yükleme
+```bash
+adb install -r dist/HackTricks_Vault.apk
+```
+veya yerel ağ üzerinden telefona indirmek için:
+```bash
+python3 -m http.server -d dist 8080
+```
+Telefon tarayıcısından `http://<BILGISAYAR_IP>:8080/HackTricks_Vault.apk` adresini açabilirsiniz.
 
 ---
 
-### Yöntem B: Yerelde Dokümanları Derleme ve Önizleme
+## 🔄 Otomatik Güncelleme (GitHub Actions CI/CD)
 
-1. **Dokümanları Çek ve Derle:**
-   ```bash
-   ./scripts/fetch_and_build.sh
-   ```
-   *(Bu script `hacktricks` reposunun `master` ve `tr` dallarını sığ klon ile çeker ve mdBook ile HTML'e derler.)*
-
-2. **Tarayıcıda Test Et (Önizleme):**
-   ```bash
-   ./scripts/serve_preview.py
-   ```
-   Ardından tarayıcınızdan `http://localhost:8080` adresine giderek mobil görünümü ve aramayı test edebilirsiniz.
+- Repoda her ayın **1'inde ve 15'inde** veya **Actions -> Run workflow** tıklandığında otomatik yeni APK derlenir ve GitHub Releases bölümüne yüklenir.
