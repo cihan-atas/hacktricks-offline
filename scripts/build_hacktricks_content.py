@@ -19,7 +19,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 EN_SRC = BASE_DIR / "sources" / "hacktricks-en" / "src"
-CLOUD_SRC = BASE_DIR / "sources" / "hacktricks-cloud" / "src"
+CLOUD_EN_SRC = BASE_DIR / "sources" / "hacktricks-cloud" / "src"
+CLOUD_TR_SRC = BASE_DIR / "sources" / "hacktricks-cloud-tr" / "src"
 TR_SRC = BASE_DIR / "sources" / "hacktricks-tr" / "src"
 ASSETS_DIR = BASE_DIR / "app" / "assets" / "data"
 
@@ -393,11 +394,17 @@ def build_combined_language(main_src: Path, cloud_src: Path, out_dir: Path, lang
 def main():
     print("=== HackTricks Vault (Main + Cloud) İçerik Çıkarıcı Başlatılıyor ===")
     
-    # 1. İngilizce (Main EN + Cloud)
-    build_combined_language(EN_SRC, CLOUD_SRC, ASSETS_DIR / "en", "en")
+    # 1. İngilizce (Main EN + Cloud EN)
+    print("[-] İngilizce içerikler (Main EN + Cloud EN) derleniyor...")
+    build_combined_language(EN_SRC, CLOUD_EN_SRC, ASSETS_DIR / "en", "en")
 
-    # 2. Türkçe (Main TR + Cloud)
-    build_combined_language(TR_SRC, CLOUD_SRC, ASSETS_DIR / "tr", "tr")
+    # 2. Türkçe (Main TR + Cloud TR)
+    cloud_tr = CLOUD_TR_SRC if CLOUD_TR_SRC.exists() else CLOUD_EN_SRC
+    if cloud_tr == CLOUD_TR_SRC:
+        print("[-] Türkçe içerikler (Main TR + Cloud TR) derleniyor...")
+    else:
+        print("[!] UYARI: sources/hacktricks-cloud-tr bulunamadı, Cloud EN fallback kullanılıyor.")
+    build_combined_language(TR_SRC, cloud_tr, ASSETS_DIR / "tr", "tr")
 
     # Global istatistikler
     stats = {

@@ -10959,7 +10959,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "70329a46fdf0",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "Kyverno policy concepts and examples are now in Kyverno basics. Policy bypass notes are in Kyverno bypass."
+    "description": "Kyverno policy kavramları ve örnekleri artık Kyverno basics bölümünde. Policy bypass notları Kyverno bypass bölümünde."
   },
   {
     "id": "b0992de245f1",
@@ -10968,7 +10968,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "70329a46fdf0",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "Policy exclusions alone do not grant another principal's permissions. See Kyverno bypass."
+    "description": "Policy exclusions tek başına başka bir principal'a ait izinleri vermez. Bkz. Kyverno bypass."
   },
   {
     "id": "300cf8f130f0",
@@ -10977,7 +10977,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "70329a46fdf0",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "OPA Gatekeeper policy concepts and examples are now in OPA Gatekeeper basics. Policy bypass notes are in OPA Gatekeeper bypass."
+    "description": "OPA Gatekeeper policy kavramları ve örnekleri artık OPA Gatekeeper temel bilgileri sayfasında. Policy bypass notları OPA Gatekeeper bypass sayfasında."
   },
   {
     "id": "e27af827eecc",
@@ -10986,7 +10986,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "70329a46fdf0",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "Policy exclusions alone do not grant another principal's permissions. See OPA Gatekeeper bypass."
+    "description": "Policy istisnaları tek başına başka bir principal'ın izinlerini vermez. Bkz. OPA Gatekeeper bypass."
   },
   {
     "id": "1b4a7948693f",
@@ -11022,7 +11022,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "70329a46fdf0",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "The External Secrets Operator walkthrough describes copying provider secrets into a namespace. Reading an arbitrary secret does not establish a known principal or additional permis..."
+    "description": "External Secrets Operator kılavuzu, sağlayıcı secret'larının bir namespace'e kopyalanmasını açıklar. Rastgele bir secret'ı okumak, bilinen bir principal veya ek izinler olduğunu gö..."
   },
   {
     "id": "d5929e6ded8c",
@@ -11031,7 +11031,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "70329a46fdf0",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "The raw API examples show how to submit objects with an existing grant. See API object operations for the request examples and the linked privilege escalation paths."
+    "description": "Ham API örnekleri, mevcut bir grant ile nesnelerin nasıl gönderileceğini gösterir. İstek örnekleri ve bağlantılı privilege escalation yolları için API nesne işlemleri sayfasına bak..."
   },
   {
     "id": "0574efbd58d4",
@@ -11184,7 +11184,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "542e62e16f75",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "Weakening an admission guardrail can allow an otherwise denied request. A bypass alone does not grant a new principal credential or RBAC permission. An escalation path requires a s..."
+    "description": "Bir admission guardrail'ı zayıflatmak, normalde reddedilecek bir isteğe izin verilmesini sağlayabilir. Tek başına bir bypass, yeni bir principal kimlik bilgisi veya RBAC izni kazan..."
   },
   {
     "id": "2d56ac6003fa",
@@ -11850,7 +11850,7 @@
     "pillar_id": "cloud_gcp",
     "module_id": "1d7a43eaad03",
     "category": "🌐 Google Cloud (GCP) Güvenliği & Pentest",
-    "description": "The actions below invoke existing saved workflows and compilation results. Their effects depend on the saved configuration; invocation alone does not grant the caller the workflow ..."
+    "description": "Aşağıdaki işlemler, önceden kaydedilmiş iş akışlarını ve derleme sonuçlarını çağırır. Etkileri kaydedilmiş yapılandırmaya bağlıdır; yalnızca çağrıda bulunmak, çağırana iş akışının ..."
   },
   {
     "id": "73938e3457f2",
@@ -15072,7 +15072,7 @@
     "pillar_id": "cloud_gcp",
     "module_id": "3bfa27a96392",
     "category": "🌐 Google Cloud (GCP) Güvenliği & Pentest",
-    "description": "The privilege escalation techniques have moved to the GCP privilege escalation page."
+    "description": "Privilege escalation teknikleri GCP privilege escalation sayfasına taşındı."
   },
   {
     "id": "09a2ccfa0ef9",
@@ -15090,7 +15090,7 @@
     "pillar_id": "cloud_gcp",
     "module_id": "3bfa27a96392",
     "category": "🌐 Google Cloud (GCP) Güvenliği & Pentest",
-    "description": "The privilege escalation techniques have moved to the GCP privilege escalation page."
+    "description": "Privilege escalation teknikleri GCP privilege escalation sayfasına taşındı."
   },
   {
     "id": "bfab508952ea",
@@ -18150,7 +18150,7 @@
     "pillar_id": "cloud_aws",
     "module_id": "5e7e1ff758ed",
     "category": "☁️ AWS Bulut Güvenliği & Pentest",
-    "description": "A custom component type can nominate Lambda functions for schemaInitializer, dataReader and dataWriter. TwinMaker invokes the selected function using the workspace execution role. ..."
+    "description": "Özel bir component type, schemaInitializer, dataReader ve dataWriter için Lambda fonksiyonları belirleyebilir. TwinMaker, seçilen fonksiyonu workspace execution role kullanarak çağ..."
   },
   {
     "id": "9afffca26806",
@@ -19113,7 +19113,7 @@
     "pillar_id": "cloud_aws",
     "module_id": "286ca64b9a50",
     "category": "☁️ AWS Bulut Güvenliği & Pentest",
-    "description": "The read actions above disclose existing workflows. CreateWorkflow goes further: it stands up a brand-new serverless Airflow workflow from an attacker-supplied YAML definition in S..."
+    "description": "Yukarıdaki okuma eylemleri mevcut workflow'ları açığa çıkarır. CreateWorkflow daha da ileri gider: S3'te saldırganın sağladığı bir YAML tanımından, arayanın seçtiği bir yürütme rol..."
   },
   {
     "id": "d9691629ce9c",
@@ -19122,7 +19122,7 @@
     "pillar_id": "cloud_aws",
     "module_id": "286ca64b9a50",
     "category": "☁️ AWS Bulut Güvenliği & Pentest",
-    "description": "Write access to a trusted CodeArtifact package can become code execution in a later build or application dependency refresh. Package assets are not freely mutable: CodeArtifact rej..."
+    "description": "Güvenilen bir CodeArtifact paketine yazma erişimi, sonraki bir derlemede veya uygulama bağımlılıkları yenilendiğinde kod çalıştırmaya dönüşebilir. Paket öğeleri serbestçe değiştiri..."
   },
   {
     "id": "3ef8ead89eae",
@@ -19158,7 +19158,7 @@
     "pillar_id": "cloud_aws",
     "module_id": "286ca64b9a50",
     "category": "☁️ AWS Bulut Güvenliği & Pentest",
-    "description": "PCS creates a managed Secrets Manager secret named like pcs!slurm-secret-<cluster-id>. The GetCluster response discloses its exact ARN and version under slurmConfiguration.authKey...."
+    "description": "PCS, pcs!slurm-secret-<cluster-id> biçiminde adlandırılmış, yönetilen bir Secrets Manager secret oluşturur. GetCluster yanıtı, slurmConfiguration.authKey altında secret'ın tam ARN'..."
   },
   {
     "id": "222fb05c3e1f",
@@ -19167,7 +19167,7 @@
     "pillar_id": "cloud_aws",
     "module_id": "286ca64b9a50",
     "category": "☁️ AWS Bulut Güvenliği & Pentest",
-    "description": "CreateComponentVersion registers a component whose recipe includes a lifecycle run/install script (arbitrary shell/commands executed on the device, by default as the Greengrass sys..."
+    "description": "CreateComponentVersion, tarifinde bir lifecycle run/install betiği bulunan bir bileşeni kaydeder (cihazda varsayılan olarak Greengrass sistem kullanıcısı, çoğu zaman root olarak ça..."
   },
   {
     "id": "be2d63a83b02",
@@ -26394,7 +26394,7 @@
     "pillar_id": "cloud_k8s",
     "module_id": "e24e4e2347fd",
     "category": "☸️ Kubernetes & Konteyner Güvenliği",
-    "description": "In OpenShift, SCC stands for Security Context Constraints. SCCs are cluster-level policies used during admission to control the permissions available to pods and the conditions und..."
+    "description": "OpenShift'te SCC, Security Context Constraints (Güvenlik Bağlamı Kısıtlamaları) anlamına gelir. SCC'ler, pod'lara sunulan izinleri ve bir pod'un çalışabileceği koşulları denetlemek..."
   },
   {
     "id": "1d9f304f0580",

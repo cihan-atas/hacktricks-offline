@@ -28,6 +28,20 @@ echo "  • Flutter: $(flutter --version | head -n 1)"
 
 echo ""
 echo "[2/3] 📚 HackTricks Dokümanları Taranıyor (TR & EN)..."
+mkdir -p "$PROJECT_DIR/sources"
+if [ ! -d "$PROJECT_DIR/sources/hacktricks-en/.git" ]; then
+    git clone --depth 1 --branch master https://github.com/HackTricks-wiki/hacktricks.git "$PROJECT_DIR/sources/hacktricks-en"
+fi
+if [ ! -d "$PROJECT_DIR/sources/hacktricks-tr/.git" ]; then
+    git clone --depth 1 --branch tr https://github.com/HackTricks-wiki/hacktricks.git "$PROJECT_DIR/sources/hacktricks-tr"
+fi
+if [ ! -d "$PROJECT_DIR/sources/hacktricks-cloud/.git" ]; then
+    git clone --depth 1 --branch master https://github.com/HackTricks-wiki/hacktricks-cloud.git "$PROJECT_DIR/sources/hacktricks-cloud"
+fi
+if [ ! -d "$PROJECT_DIR/sources/hacktricks-cloud-tr/.git" ]; then
+    git clone --depth 1 --branch tr https://github.com/HackTricks-wiki/hacktricks-cloud.git "$PROJECT_DIR/sources/hacktricks-cloud-tr"
+fi
+
 python3 "$PROJECT_DIR/scripts/build_hacktricks_content.py"
 python3 "$PROJECT_DIR/scripts/extract_hacktricks_commands.py"
 

@@ -314,7 +314,10 @@ def extract_commands_from_file(filepath: Path, lang: str):
         return commands
 
     if lang == 'cloud':
-        rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / 'hacktricks-cloud' / 'src'))
+        try:
+            rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / 'hacktricks-cloud' / 'src'))
+        except ValueError:
+            rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / 'hacktricks-cloud-tr' / 'src'))
     else:
         rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / f'hacktricks-{lang}'))
     
@@ -416,11 +419,21 @@ def main():
                 if key not in all_commands:
                     all_commands[key] = cmd
 
-    # 2. HackTricks Cloud Dokümanları
+    # 2. HackTricks Cloud Dokümanları (EN)
     cloud_dir = BASE_DIR / 'sources' / 'hacktricks-cloud' / 'src'
     if cloud_dir.exists():
-        print(f"[+] 'CLOUD' dokümanları taranıyor ({cloud_dir})...")
+        print(f"[+] 'CLOUD (EN)' dokümanları taranıyor ({cloud_dir})...")
         for p in cloud_dir.rglob('*.md'):
+            for cmd in extract_commands_from_file(p, 'cloud'):
+                key = cmd['template']
+                if key not in all_commands:
+                    all_commands[key] = cmd
+
+    # 2.5 HackTricks Cloud Dokümanları (TR)
+    cloud_tr_dir = BASE_DIR / 'sources' / 'hacktricks-cloud-tr' / 'src'
+    if cloud_tr_dir.exists():
+        print(f"[+] 'CLOUD (TR)' dokümanları taranıyor ({cloud_tr_dir})...")
+        for p in cloud_tr_dir.rglob('*.md'):
             for cmd in extract_commands_from_file(p, 'cloud'):
                 key = cmd['template']
                 if key not in all_commands:

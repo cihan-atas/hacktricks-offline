@@ -44,8 +44,12 @@ jobs:
             git clone --depth 1 --branch tr https://github.com/HackTricks-wiki/hacktricks.git sources/hacktricks-tr
           fi
           if [ ! -d "sources/hacktricks-cloud/.git" ]; then
-            echo "Cloning HackTricks Cloud..."
-            git clone --depth 1 https://github.com/HackTricks-wiki/hacktricks-cloud.git sources/hacktricks-cloud
+            echo "Cloning HackTricks Cloud EN (master)..."
+            git clone --depth 1 --branch master https://github.com/HackTricks-wiki/hacktricks-cloud.git sources/hacktricks-cloud
+          fi
+          if [ ! -d "sources/hacktricks-cloud-tr/.git" ]; then
+            echo "Cloning HackTricks Cloud TR (tr)..."
+            git clone --depth 1 --branch tr https://github.com/HackTricks-wiki/hacktricks-cloud.git sources/hacktricks-cloud-tr
           fi
           python3 ./scripts/build_hacktricks_content.py
           python3 ./scripts/extract_hacktricks_commands.py

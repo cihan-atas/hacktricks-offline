@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "total_commands": 17016,
+  "total_commands": 17127,
   "categories": {
     "recon": {
       "id": "recon",
@@ -258111,6 +258111,1817 @@
       "variables": [],
       "doc_title": "Jenkins in OpenShift - build pod overrides",
       "doc_path": "pentesting-cloud/openshift-pentesting/openshift-jenkins/openshift-jenkins-build-overrides.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "2749a4a387d9",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Belirtilecek IAM role, kiam/kube2iam role'üyle aynı AWS hesabında olmalı ve bu role'ün söz konusu role erişebilmesi gerekir.<sup>[[16]](#references)[[17]](#references)</sup>",
+      "template": "Belirtilecek IAM role, kiam/kube2iam role'üyle aynı AWS hesabında olmalı ve bu role'ün söz konusu role erişebilmesi gerekir.<sup>[[16]](#references)[[17]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "017f977d01a6",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Bu, **AWS tarafından önerilen yöntemdir**.<sup>[[18]](#references)[[19]](#references)</sup>",
+      "template": "Bu, **AWS tarafından önerilen yöntemdir**.<sup>[[18]](#references)[[19]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "2c3d8b08a774",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "1. Öncelikle [cluster için bir OIDC provider oluşturmanız](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html) gerekir.<sup>[[18]](#references)</sup>",
+      "template": "1. Öncelikle [cluster için bir OIDC provider oluşturmanız]({{target_url}} gerekir.<sup>[[18]](#references)</sup>",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "cc0fea01bce1",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "3. IAM role ile SA adı (veya role namespace'teki tüm SA'lara erişim veren namespace'ler) arasında bir [trust relationship oluşturun](https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html). _Trust relationship temel olarak OIDC provider adını, namespace adını ve SA adını kontrol eder_.<sup>[[19]](#references)</sup>",
+      "template": "3. IAM role ile SA adı (veya role namespace'teki tüm SA'lara erişim veren namespace'ler) arasında bir [trust relationship oluşturun]({{target_url}} _Trust relationship temel olarak OIDC provider adını, namespace adını ve SA adını kontrol eder_.<sup>[[19]](#references)</sup>",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "324941ef9c7b",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Token'ı kullanarak **aws'e erişmek** için `/var/run/secrets/eks.amazonaws.com/serviceaccount/token` dosyasından token'ı alıp şu komutu çalıştırın:",
+      "template": "Token'ı kullanarak **aws'e erişmek** için `/var/run/secrets/eks.amazonaws.com/serviceaccount/token` dosyasından token'ı alıp şu komutu çalıştırın:",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "adadc128e2ac",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Bir saldırgan olarak, bir K8s cluster'ını enumerate edebiliyorsanız, **AWS'ye yetki yükseltmek** için **bu annotation'a sahip service account'ları** kontrol edin. Bunun için IAM **yetkili service account'larından** birini kullanarak bir **pod**'u **exec/create** edin ve token'ı ele geçirin.",
+      "template": "Bir saldırgan olarak, bir K8s cluster'ını enumerate edebiliyorsanız, **AWS'ye yetki yükseltmek** için **bu annotation'a sahip service account'ları** kontrol edin. Bunun için IAM **yetkili service account'larından** birini kullanarak bir **pod**'u **exec/create** edin ve token'ı ele geçirin.",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "20ba80639ade",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "EKS Pod Identity, her workload'un IRSA web identity token'ıyla STS'yi çağırmasına gerek kalmadan bir IAM role'ünü Kubernetes service account'uyla ilişkilendirmenin AWS tarafından yönetilen yeni yöntemidir. Cluster, node'larda EKS Pod Identity Agent'ı çalıştırır; EKS API, pod identity association'larını saklar ve seçili pod'lardaki AWS SDK'ları, agent'ın sunduğu container credentials provider yolu üzerinden kimlik bilgilerini alır.<sup>[[4]](#references)[[5]](#references)</sup>",
+      "template": "EKS Pod Identity, her workload'un IRSA web identity token'ıyla STS'yi çağırmasına gerek kalmadan bir IAM role'ünü Kubernetes service account'uyla ilişkilendirmenin AWS tarafından yönetilen yeni yöntemidir. Cluster, node'larda EKS Pod Identity Agent'ı çalıştırır; EKS API, pod identity association'larını saklar ve seçili pod'lardaki AWS SDK'ları, agent'ın sunduğu container credentials provider yolu üzerinden kimlik bilgilerini alır.<sup>[[4]](#references)[[5]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "30fdc7a99f61",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Kubernetes'te ilgi çekici kanıtlar hâlâ service account ile pod arasındaki ilişkidir, ancak çalışma zamanı sinyalleri IRSA'dakilerden farklıdır. Pod'larda yalnızca `AWS_WEB_IDENTITY_TOKEN_FILE` yerine AWS container credential ortam değişkenlerini arayın:<sup>[[4]](#references)[[5]](#references)</sup>",
+      "template": "Kubernetes'te ilgi çekici kanıtlar hâlâ service account ile pod arasındaki ilişkidir, ancak çalışma zamanı sinyalleri IRSA'dakilerden farklıdır. Pod'larda yalnızca `AWS_WEB_IDENTITY_TOKEN_FILE` yerine AWS container credential ortam değişkenlerini arayın:<sup>[[4]](#references)[[5]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "3c78c69e7d34",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "AWS'den ilişkilendirmeleri listeleyin ve ardından bunları Kubernetes namespace'leri ve service account'larla eşleştirin:",
+      "template": "AWS'den ilişkilendirmeleri listeleyin ve ardından bunları Kubernetes namespace'leri ve service account'larla eşleştirin:",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "ac39d96733e2",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Yerel kimlik bilgisi uç noktası genellikle `http://169.254.170.23/v1/credentials` olur ve yetkilendirme token'ı, `pods.eks.amazonaws.com` audience'ı için projeksiyonla sağlanan bir service account token'ıdır. AWS SDK kimlik bilgisi sağlayıcı sıralamasının hâlâ geçerli olduğunu unutmayın: zincirde daha önce statik ortam kimlik bilgileri veya paylaşılan kimlik bilgisi dosyaları yapılandırılmışsa Pod, Pod Identity ilişkilendirmesi yerine bunları kullanabilir.<sup>[[5]](#references)[[27]](#references)[[33]](#references)</sup>",
+      "template": "Yerel kimlik bilgisi uç noktası genellikle `{{target_url}} olur ve yetkilendirme token'ı, `pods.eks.amazonaws.com` audience'ı için projeksiyonla sağlanan bir service account token'ıdır. AWS SDK kimlik bilgisi sağlayıcı sıralamasının hâlâ geçerli olduğunu unutmayın: zincirde daha önce statik ortam kimlik bilgileri veya paylaşılan kimlik bilgisi dosyaları yapılandırılmışsa Pod, Pod Identity ilişkilendirmesi yerine bunları kullanabilir.<sup>[[5]](#references)[[27]](#references)[[33]](#references)</sup>",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "9452bdb380dc",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Pod Identity rolleri normalde `sts:AssumeRole` ve `sts:TagSession` için `pods.eks.amazonaws.com` hizmet sorumlusuna güvenir. `kubernetes-namespace`, `kubernetes-service-account` ve küme etiketleri gibi istek etiketlerine yönelik güven politikası koşullarını inceleyin; geniş kapsamlı koşullar, yeniden kullanılabilir bir rolü gereğinden fazla sayıda service account'ın kullanımına açabilir. Pod Identity ayrıca geçici kimlik bilgilerine oturum etiketleri ekler. Bu etiketler, `${aws:PrincipalTag/kubernetes-namespace}` veya `${aws:PrincipalTag/kubernetes-service-account}` üzerinden kaynak erişimi gibi ABAC politikalarını yönlendirebilir.<sup>[[25]](#references)[[26]](#references)[[32]](#references)</sup>",
+      "template": "Pod Identity rolleri normalde `sts:AssumeRole` ve `sts:TagSession` için `pods.eks.amazonaws.com` hizmet sorumlusuna güvenir. `kubernetes-namespace`, `kubernetes-service-account` ve küme etiketleri gibi istek etiketlerine yönelik güven politikası koşullarını inceleyin; geniş kapsamlı koşullar, yeniden kullanılabilir bir rolü gereğinden fazla sayıda service account'ın kullanımına açabilir. Pod Identity ayrıca geçici kimlik bilgilerine oturum etiketleri ekler. Bu etiketler, `${aws:PrincipalTag/kubernetes-namespace}` veya `${aws:PrincipalTag/kubernetes-service-account}` üzerinden kaynak erişimi gibi ABAC politikalarını yönlendirebilir.<sup>[[25]](#references)[[26]](#references)[[32]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "0066ae83404d",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "EKS Pod Identity ilişkilendirmesi olan bir service account'ı kullanan pod'ları oluşturabiliyor veya değiştirebiliyorsanız, bu pod'un işinize yarayacak AWS izinlerini alıp almadığını test edin. Savunma yapıyorsanız yeni pod identity ilişkilendirmelerini, beklenmeyen service account kullanımını ve yalnızca belirli iş yükleri tarafından kullanılması gereken rollerden gelen AWS API çağrılarını izlemek için uyarılar oluşturun.<sup>[[4]](#references)</sup>",
+      "template": "EKS Pod Identity ilişkilendirmesi olan bir service account'ı kullanan pod'ları oluşturabiliyor veya değiştirebiliyorsanız, bu pod'un işinize yarayacak AWS izinlerini alıp almadığını test edin. Savunma yapıyorsanız yeni pod identity ilişkilendirmelerini, beklenmeyen service account kullanımını ve yalnızca belirli iş yükleri tarafından kullanılması gereken rollerden gelen AWS API çağrılarını izlemek için uyarılar oluşturun.<sup>[[4]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "dea5b7c336c5",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "EKS düğümlerinde genellikle bir EC2 instance-profile IAM rolü bulunur. Farklı düğüm grupları veya sağlama modları farklı roller kullanabilir; bu nedenle ilgili Pod'un düğümünü ve instance profile'ını eşleştirin. Bir Pod'dan düğüm IMDS'sine erişmek, yalnızca IMDS ayarları ve Pod'un ağ konumu buna izin veriyorsa bu rolü açığa çıkarabilir; ardından rolün AWS ve Kubernetes üzerindeki etkisi ayrı ayrı değerlendirilmelidir.<sup>[[24]](#references)</sup>",
+      "template": "EKS düğümlerinde genellikle bir EC2 instance-profile IAM rolü bulunur. Farklı düğüm grupları veya sağlama modları farklı roller kullanabilir; bu nedenle ilgili Pod'un düğümünü ve instance profile'ını eşleştirin. Bir Pod'dan düğüm IMDS'sine erişmek, yalnızca IMDS ayarları ve Pod'un ağ konumu buna izin veriyorsa bu rolü açığa çıkarabilir; ardından rolün AWS ve Kubernetes üzerindeki etkisi ayrı ayrı değerlendirilmelidir.<sup>[[24]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "78c066c6bbb5",
+      "tool": "az",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AZ - K8s - Bulutlara Pivoting",
+      "raw_command": "- Bir pod içinde olmanız ve meta veri uç noktasının en az 2 TCP hop'una izin verecek şekilde yapılandırılmış olması gerekir. Bu, en yaygın yanlış yapılandırmadır; genellikle kümedeki farklı pod'ların çalışmaya devam etmek için meta veri uç noktasına erişmesi gerekir ve birçok şirket, kümedeki tüm pod'lardan bu uç noktaya erişime izin vermeyi tercih eder.",
+      "template": "- Bir pod içinde olmanız ve meta veri uç noktasının en az 2 TCP hop'una izin verecek şekilde yapılandırılmış olması gerekir. Bu, en yaygın yanlış yapılandırmadır; genellikle kümedeki farklı pod'ların çalışmaya devam etmek için meta veri uç noktasına erişmesi gerekir ve birçok şirket, kümedeki tüm pod'lardan bu uç noktaya erişime izin vermeyi tercih eder.",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "cd65b146e71d",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Daha yeni EKS ortamlarında, Pod'ların düğüm instance profile'ına erişebileceğini varsaymadan önce düğüm ve küme modunu doğrulayın. Amazon Linux 2023 yönetilen düğüm grupları için AWS, launch template **olmadığında** varsayılan IMDSv2 hop limit'inin 1; launch template içindeki özel bir AMI için ise 2 olduğunu belgeliyor. Operatör desteklenen launch template ayarlarını geçersiz kılabilir. EKS Auto Mode, IMDSv2'yi 1 hop limit'iyle zorunlu kılar. `disablePodIMDS`, host-network kullanmayan pod'lardan gelen IMDS isteklerini engelleyen ayrı bir düğüm grubu ayarıdır. Daha yüksek hop limit'i olan bir yapılandırmada veya başka bir ağ yolu üzerinden sıradan bir Pod düğüm kimlik bilgilerine erişebilir; `hostNetwork` kullanımı ve düğümün ele geçirilmesi ise farklı sınırları aşar. İş yüklerinin AWS erişimi için IRSA veya EKS Pod Identity kullanın ve ayarları AMI adına bakarak çıkarsamak yerine EC2 meta veri seçeneklerinin geçerli değerlerini doğrulayın.<sup>[[24]](#references)[[28]](#references)[[29]](#references)[[30]](#references)</sup>",
+      "template": "Daha yeni EKS ortamlarında, Pod'ların düğüm instance profile'ına erişebileceğini varsaymadan önce düğüm ve küme modunu doğrulayın. Amazon Linux 2023 yönetilen düğüm grupları için AWS, launch template **olmadığında** varsayılan IMDSv2 hop limit'inin 1; launch template içindeki özel bir AMI için ise 2 olduğunu belgeliyor. Operatör desteklenen launch template ayarlarını geçersiz kılabilir. EKS Auto Mode, IMDSv2'yi 1 hop limit'iyle zorunlu kılar. `disablePodIMDS`, host-network kullanmayan pod'lardan gelen IMDS isteklerini engelleyen ayrı bir düğüm grubu ayarıdır. Daha yüksek hop limit'i olan bir yapılandırmada veya başka bir ağ yolu üzerinden sıradan bir Pod düğüm kimlik bilgilerine erişebilir; `hostNetwork` kullanımı ve düğümün ele geçirilmesi ise farklı sınırları aşar. İş yüklerinin AWS erişimi için IRSA veya EKS Pod Identity kullanın ve ayarları AMI adına bakarak çıkarsamak yerine EC2 meta veri seçeneklerinin geçerli değerlerini doğrulayın.<sup>[[24]](#references)[[28]](#references)[[29]](#references)[[30]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "e08c07e83e43",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "EKS düğüm IAM rolüne erişim, AWS kimliği açısından önemli bir açığa çıkmadır ancak **otomatik olarak cluster-admin yetkisi vermez**. Önce rolün IAM izinlerini ve kümenin bu rolü bir EKS access entry üzerinden mi yoksa eski `aws-auth` ConfigMap üzerinden mi eşlediğini belirleyin. Ortaya çıkan Kubernetes grupları veya erişim politikaları, Kubernetes RBAC, Node authorization ve admission, küme üzerindeki gerçek etkiyi belirler. Normal bir düğüm eşlemesi, düğüm işlevleriyle sınırlı olmalıdır; ayrıca aşırı yetkilendirilmiş bir eşleme veya rol sonucu değiştirebilir.<sup>[[20]](#references)[[21]](#references)[[35]](#references)[[37]](#references)</sup>",
+      "template": "EKS düğüm IAM rolüne erişim, AWS kimliği açısından önemli bir açığa çıkmadır ancak **otomatik olarak cluster-admin yetkisi vermez**. Önce rolün IAM izinlerini ve kümenin bu rolü bir EKS access entry üzerinden mi yoksa eski `aws-auth` ConfigMap üzerinden mi eşlediğini belirleyin. Ortaya çıkan Kubernetes grupları veya erişim politikaları, Kubernetes RBAC, Node authorization ve admission, küme üzerindeki gerçek etkiyi belirler. Normal bir düğüm eşlemesi, düğüm işlevleriyle sınırlı olmalıdır; ayrıca aşırı yetkilendirilmiş bir eşleme veya rol sonucu değiştirebilir.<sup>[[20]](#references)[[21]](#references)[[35]](#references)[[37]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "9c99a4973751",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - K8s - Bulutlara Pivoting",
+      "raw_command": "Node authorizer isteğe izin verdiğinde kubelet, kendi düğümüne atanmış Pod'lar tarafından kullanılan ServiceAccount'lar için token isteyebilir; güncel NodeRestriction, istenen token audience'larını da kısıtlayabilir. Gerçek Node kimliğini, hedef Pod UID'sini, ServiceAccount'ı, token audience'ını ve self-access incelemesini doğrulayın. **AWS düğüm rolüne** sahip olmak, kubelet'in Kubernetes istemci sertifikasına veya host dosya sistemine sahip olmakla aynı şey değildir. Aşağıdaki örnek, bu Pod için bağlı token'ı istemeye yetkili bir Kubernetes kimliği gerektirir:<sup>[[14]](#references)[[20]](#references)[[35]](#references)</sup>",
+      "template": "Node authorizer isteğe izin verdiğinde kubelet, kendi düğümüne atanmış Pod'lar tarafından kullanılan ServiceAccount'lar için token isteyebilir; güncel NodeRestriction, istenen token audience'larını da kısıtlayabilir. Gerçek Node kimliğini, hedef Pod UID'sini, ServiceAccount'ı, token audience'ını ve self-access incelemesini doğrulayın. **AWS düğüm rolüne** sahip olmak, kubelet'in Kubernetes istemci sertifikasına veya host dosya sistemine sahip olmakla aynı şey değildir. Aşağıdaki örnek, bu Pod için bağlı token'ı istemeye yetkili bir Kubernetes kimliği gerektirir:<sup>[[14]](#references)[[20]](#references)[[35]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "318a5a09d126",
+      "tool": "az",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AZ - K8s - Bulutlara Pivoting",
+      "raw_command": "- **Azure'dan Kubernetes'e**: Azure RBAC rolü izin veriyorsa Azure sorumluları, Azure Resource Manager üzerinden kullanıcı veya admin kubeconfig'lerini alabilir. `az aks get-credentials --admin` ile alınan yerel admin kubeconfig'leri sertifika tabanlı kimlik bilgileridir ve yerel hesaplar devre dışı bırakılmadıkça normal Microsoft Entra kullanıcı/grup yönetişimini atlayabilir.<sup>[[6]](#references)</sup>",
+      "template": "- **Azure'dan Kubernetes'e**: Azure RBAC rolü izin veriyorsa Azure sorumluları, Azure Resource Manager üzerinden kullanıcı veya admin kubeconfig'lerini alabilir. `az aks get-credentials --admin` ile alınan yerel admin kubeconfig'leri sertifika tabanlı kimlik bilgileridir ve yerel hesaplar devre dışı bırakılmadıkça normal Microsoft Entra kullanıcı/grup yönetişimini atlayabilir.<sup>[[6]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "d54d5a7987fd",
+      "tool": "az",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AZ - K8s - Bulutlara Pivoting",
+      "raw_command": "Yerel admin yolunu test etmeden önce `disableLocalAccounts` değerini kontrol edin. Bu özellik etkinse ve çağıran taraf kimlik bilgisini alabiliyorsa, `az aks get-credentials --admin` sertifika tabanlı bir cluster-admin kubeconfig yazar; bu, yüksek etkili ve ayrı bir Azure RBAC iznidir ve Entra Kubernetes RoleBinding'e bağlı değildir. Komutun hassas bir bağlamı operatörün normal kubeconfig'ine birleştirmemesi için yetkili bir değerlendirmede yalıtılmış bir dosya kullanın. Yerel hesaplar devre dışıysa komut reddedilmelidir; normal `az aks get-credentials` ise etkin Kubernetes izinlerinin yine de incelenmesi gereken, Entra ile kimliği doğrulanmış bir bağlam hazırlar.<sup>[[49]](#references)</sup>",
+      "template": "Yerel admin yolunu test etmeden önce `disableLocalAccounts` değerini kontrol edin. Bu özellik etkinse ve çağıran taraf kimlik bilgisini alabiliyorsa, `az aks get-credentials --admin` sertifika tabanlı bir cluster-admin kubeconfig yazar; bu, yüksek etkili ve ayrı bir Azure RBAC iznidir ve Entra Kubernetes RoleBinding'e bağlı değildir. Komutun hassas bir bağlamı operatörün normal kubeconfig'ine birleştirmemesi için yetkili bir değerlendirmede yalıtılmış bir dosya kullanın. Yerel hesaplar devre dışıysa komut reddedilmelidir; normal `az aks get-credentials` ise etkin Kubernetes izinlerinin yine de incelenmesi gereken, Entra ile kimliği doğrulanmış bir bağlam hazırlar.<sup>[[49]](#references)</sup>",
+      "variables": [],
+      "doc_title": "K8s - Bulutlara Pivoting",
+      "doc_path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kubernetes-pivoting-to-clouds.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "343bc3792452",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [1] [AWS Systems Manager için eylemler, kaynaklar ve koşul anahtarları](https://docs.aws.amazon.com/service-authorization/latest/reference/list_ssm.html)",
+      "template": "- [1] [AWS Systems Manager için eylemler, kaynaklar ve koşul anahtarları]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "1c757778d601",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [4] [Amazon EC2 için IAM rolleri](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html)",
+      "template": "- [4] [Amazon EC2 için IAM rolleri]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "3f4116c6854f",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [5] [SSM Agent ile çalışma - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)",
+      "template": "- [5] [SSM Agent ile çalışma - AWS Systems Manager]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "a8720eaa43d9",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [8] [Oturum başlatma - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html)",
+      "template": "- [8] [Oturum başlatma - AWS Systems Manager]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "b94e6b9a45aa",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [9] [Session Manager eklentisini macOS'a yükleme - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html)",
+      "template": "- [9] [Session Manager eklentisini macOS'a yükleme - AWS Systems Manager]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "c9f2a08f65f2",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [10] [ECS Exec ile Amazon ECS kapsayıcılarını izleme - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html)",
+      "template": "- [10] [ECS Exec ile Amazon ECS kapsayıcılarını izleme - Amazon Elastic Container Service]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "15030386fede",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [11] [YENİ – AWS Fargate ve Amazon EC2'deki kapsayıcılarınıza erişmek için Amazon ECS Exec kullanma](https://aws.amazon.com/blogs/containers/new-using-amazon-ecs-exec-access-your-containers-fargate-ec2/)",
+      "template": "- [11] [YENİ – AWS Fargate ve Amazon EC2'deki kapsayıcılarınıza erişmek için Amazon ECS Exec kullanma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "72454fc4fb51",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [13] [resume-session - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/resume-session.html)",
+      "template": "- [13] [resume-session - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "617a36891011",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [15] [describe-parameters - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/describe-parameters.html)",
+      "template": "- [15] [describe-parameters - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "34d5ac9db384",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [16] [get-parameters - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/get-parameters.html)",
+      "template": "- [16] [get-parameters - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "8d096b04d484",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [17] [get-parameter - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/get-parameter.html)",
+      "template": "- [17] [get-parameter - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "d082af704ae1",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [18] [list-commands - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/list-commands.html)",
+      "template": "- [18] [list-commands - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "9cef061c6043",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [19] [list-command-invocations - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/list-command-invocations.html)",
+      "template": "- [19] [list-command-invocations - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "14c058ee94c6",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [20] [get-command-invocation - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/get-command-invocation.html)",
+      "template": "- [20] [get-command-invocation - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "28c5af705dc6",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [22] [Referans: Systems Manager için Cron ve rate ifadeleri](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html)",
+      "template": "- [22] [Referans: Systems Manager için Cron ve rate ifadeleri]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "c3ae65d59aa5",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [24] [update-document-default-version - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/update-document-default-version.html)",
+      "template": "- [24] [update-document-default-version - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "70c3bc24857e",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [25] [list-documents - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/list-documents.html)",
+      "template": "- [25] [list-documents - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "2a0b3a15bf0b",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [26] [get-document - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/get-document.html)",
+      "template": "- [26] [get-document - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "6b6f0ab9172c",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [27] [Komut belgesi eklentisi referansı - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-command-ssm-plugin-reference.html)",
+      "template": "- [27] [Komut belgesi eklentisi referansı - AWS Systems Manager]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "f6e44e930a6b",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [28] [Veri öğeleri ve parametreler - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-syntax-data-elements-parameters.html)",
+      "template": "- [28] [Veri öğeleri ve parametreler - AWS Systems Manager]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "5e07b624a5d7",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [29] [AWS Systems Manager Bakım Pencereleri](https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows.html)",
+      "template": "- [29] [AWS Systems Manager Bakım Pencereleri]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "665785262d22",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [30] [register-target-with-maintenance-window - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/register-target-with-maintenance-window.html)",
+      "template": "- [30] [register-target-with-maintenance-window - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "9ca36efdf912",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [31] [register-task-with-maintenance-window - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/register-task-with-maintenance-window.html)",
+      "template": "- [31] [register-task-with-maintenance-window - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "419867de3f5a",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [32] [describe-maintenance-windows - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/describe-maintenance-windows.html)",
+      "template": "- [32] [describe-maintenance-windows - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "f65ff918e667",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [33] [describe-instances - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html)",
+      "template": "- [33] [describe-instances - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "ca4efd6a20b9",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [34] [describe-instance-information - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/describe-instance-information.html)",
+      "template": "- [34] [describe-instance-information - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "91403a679b8b",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [35] [describe-sessions - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/ssm/describe-sessions.html)",
+      "template": "- [35] [describe-sessions - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "aa053d1fe588",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [37] [IAM politikalarını kullanarak Parameter Store parametrelerine erişimi kısıtlama](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-access.html)",
+      "template": "- [37] [IAM politikalarını kullanarak Parameter Store parametrelerine erişimi kısıtlama]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "9af0e6b7f5cf",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [39] [Systems Manager Automation ile otomatik bir işlem çalıştırma](https://docs.aws.amazon.com/systems-manager/latest/userguide/running-simple-automations.html)",
+      "template": "- [39] [Systems Manager Automation ile otomatik bir işlem çalıştırma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "82c193c97f64",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [40] [Automation sistem değişkenleri ve assume-role yetkilendirmesi](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-variables.html)",
+      "template": "- [40] [Automation sistem değişkenleri ve assume-role yetkilendirmesi]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "b5c97e32c12d",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [41] [aws:executeAwsApi eylemi](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-action-executeAwsApi.html)",
+      "template": "- [41] [aws:executeAwsApi eylemi]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "43cb27bbee4c",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [43] [Systems Manager Automation'ı kurma](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-setup.html)",
+      "template": "- [43] [Systems Manager Automation'ı kurma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "3076dc8e7c03",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [45] [Association geçmişlerini görüntüleme](https://docs.aws.amazon.com/systems-manager/latest/userguide/state-manager-associations-history.html)",
+      "template": "- [45] [Association geçmişlerini görüntüleme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "40147677fdfb",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [47] [Systems Manager ile hibrit ve çoklu bulut ortamlarını yönetme](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud.html)",
+      "template": "- [47] [Systems Manager ile hibrit ve çoklu bulut ortamlarını yönetme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "b5d56cb3a7a0",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [48] [Düğümleri Systems Manager'a kaydetmek için hibrit aktivasyon oluşturma](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-activations-create.html)",
+      "template": "- [48] [Düğümleri Systems Manager'a kaydetmek için hibrit aktivasyon oluşturma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "97511781b43d",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [49] [Varsayılan Host Yönetimi Yapılandırması - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed-instances-default-host-management.html)",
+      "template": "- [49] [Varsayılan Host Yönetimi Yapılandırması - AWS Systems Manager]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "b148c4750a35",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [51] [Tam zamanında düğüm erişim oturumu başlatma](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-just-in-time-node-access-start-session.html)",
+      "template": "- [51] [Tam zamanında düğüm erişim oturumu başlatma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "07b36299579b",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [54] [Systems Manager kullanarak tam zamanında düğüm erişimi](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-just-in-time-node-access.html)",
+      "template": "- [54] [Systems Manager kullanarak tam zamanında düğüm erişimi]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "77b9c5a4deff",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - SSM Privesc",
+      "raw_command": "- [56] [AWS CloudTrail ile Systems Manager API çağrılarını günlüğe kaydetme](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudtrail-logs.html)",
+      "template": "- [56] [AWS CloudTrail ile Systems Manager API çağrılarını günlüğe kaydetme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - SSM Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-ssm-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "040bcdd23fac",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "`lambda:InvokeAsync` ilgi çekici görünse de, tek başına **`aws lambda invoke-async` komutunu çalıştırmaya izin vermez**; ayrıca `lambda:InvokeFunction` da gerekir.<sup>[[6]](#references)</sup>",
+      "template": "`lambda:InvokeAsync` ilgi çekici görünse de, tek başına **`aws lambda invoke-async` komutunu çalıştırmaya izin vermez**; ayrıca `lambda:InvokeFunction` da gerekir.<sup>[[6]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "a324cbcc0df6",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "AWS ortamında DynamoDB zaten etkinse, kullanıcının Lambda işlevi için yalnızca **event source mapping oluşturması** gerekir. Ancak DynamoDB kullanılmıyorsa, kullanıcının streaming etkin yeni bir tablo **oluşturması** gerekir:",
+      "template": "AWS ortamında DynamoDB zaten etkinse, kullanıcının Lambda işlevi için yalnızca **event source mapping oluşturması** gerekir. Ancak DynamoDB kullanılmıyorsa, kullanıcının streaming etkin yeni bir tablo **oluşturması** gerekir:",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "da97a5387af4",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "**Olası Etki:** Değiştirilen function çalıştığında, function'ın execution role'üyle keyfi kod çalıştırma. Bu role, çağıranın erişemediği kaynaklara erişim izni verildiğinde privilege escalation söz konusudur. Role'ün kullanışlı izinleri yoksa kodun değiştirilmesi, AWS yetkilerinde artış sağlamaktan ziyade uygulamaya müdahale niteliğindedir.",
+      "template": "**Olası Etki:** Değiştirilen function çalıştığında, function'ın execution role'üyle keyfi kod çalıştırma. Bu role, çağıranın erişemediği kaynaklara erişim izni verildiğinde privilege escalation söz konusudur. Role'ün kullanışlı izinleri yoksa kodun değiştirilmesi, AWS yetkilerinde artış sağlamaktan ziyade uygulamaya müdahale niteliğindedir.",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "38d198d251f3",
+      "tool": "docker",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "DOCKER - AWS - Lambda Privesc",
+      "raw_command": "Docker 29.1.3 publisher'ının kullandığı tam policy şuydu:",
+      "template": "Docker 29.1.3 publisher'ının kullandığı tam policy şuydu:",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "2cb9b9ab9e7f",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "AWS, private repository'ye push işlemi için authorization, layer-upload ve `PutImage` eylemlerini belgeler. Mevcut Docker istemcisinin registry `HEAD`/push yolu için ayrıca `BatchGetImage` ve `GetDownloadUrlForLayer` gerekir. ECR API'sinin doğrudan kullanılması ve layer reuse, gerçekten gereken en küçük izin kümesini değiştirebilir; dolayısıyla bu, herkes için geçerli ve daha da küçültülemeyen bir minimum değil, istemciyle uyumlu bir policy'dir.<sup>[[43]](#references)</sup>",
+      "template": "AWS, private repository'ye push işlemi için authorization, layer-upload ve `PutImage` eylemlerini belgeler. Mevcut Docker istemcisinin registry `HEAD`/push yolu için ayrıca `BatchGetImage` ve `GetDownloadUrlForLayer` gerekir. ECR API'sinin doğrudan kullanılması ve layer reuse, gerçekten gereken en küçük izin kümesini değiştirebilir; dolayısıyla bu, herkes için geçerli ve daha da küçültülemeyen bir minimum değil, istemciyle uyumlu bir policy'dir.<sup>[[43]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "45d62cbaed20",
+      "tool": "docker",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "DOCKER - AWS - Lambda Privesc",
+      "raw_command": "Lambda/ECR listeleme ve getirme çağrıları reddedilirse işlevi, repository'yi ve tag'i IaC veya state dosyalarından, deployment manifestlerinden, CI/CD yapılandırmalarından ve loglarından, CloudFormation/SAM/CDK çıktılarından, yerel Docker metadata'sından, CloudTrail veya SIEM kopyalarından, hata mesajlarından ve uygulama belgelerinden bulun. Yayıncı için tam repository/tag bilgisi gerekir, ancak Lambda keşif izni gerekmez. Bilinen bir işlevi veya deployment yolunu göstermeyen tek başına repository yazma iznini kanıtlanmış bir aday olarak değerlendirmeyin.",
+      "template": "Lambda/ECR listeleme ve getirme çağrıları reddedilirse işlevi, repository'yi ve tag'i IaC veya state dosyalarından, deployment manifestlerinden, CI/CD yapılandırmalarından ve loglarından, CloudFormation/SAM/CDK çıktılarından, yerel Docker metadata'sından, CloudTrail veya SIEM kopyalarından, hata mesajlarından ve uygulama belgelerinden bulun. Yayıncı için tam repository/tag bilgisi gerekir, ancak Lambda keşif izni gerekmez. Bilinen bir işlevi veya deployment yolunu göstermeyen tek başına repository yazma iznini kanıtlanmış bir aday olarak değerlendirmeyin.",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "6bec8cb0b2a9",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "[**Lambda Layers**](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html), function kodunun küçük kalabilmesi ve birkaç function'ın kodu paylaşabilmesi için **code**'u **ayrı olarak depolarken** Lambda function'ınıza eklemenize olanak tanır.<sup>[[18]](#references)</sup>",
+      "template": "[**Lambda Layers**]({{target_url}} function kodunun küçük kalabilmesi ve birkaç function'ın kodu paylaşabilmesi için **code**'u **ayrı olarak depolarken** Lambda function'ınıza eklemenize olanak tanır.<sup>[[18]](#references)</sup>",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "06ae0f1f233b",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "**Olası Etki:** Atanan execution role'e doğrudan privesc; URL oluşturulduktan sonra AWS kimlik bilgisi olmadan, herkese açık internet üzerinden erişilebilir.",
+      "template": "**Olası Etki:** Atanan execution role'e doğrudan privesc; URL oluşturulduktan sonra AWS kimlik bilgisi olmadan, herkese açık internet üzerinden erişilebilir.",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "11c09a0037ce",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Lambda Code Signing Config'i kaldırmak veya zayıflatmak, tek bypass yöntemi değildir. Zorunlu kılan configuration, **aktif bir AWS Signer profile version**'a güveniyorsa `signer:StartSigningJob` çağrısı yapma izni olan bir principal, saldırganın kontrolündeki bir ZIP dosyasını function'ın mevcut imza politikasından geçecek bir artifact'e dönüştürebilir. Ardından `lambda:UpdateFunctionCode`, Code Signing Config'i veya function role'ü değiştirmeden bu dosyayı deploy edebilir.<sup>[[23]](#references)[[34]](#references)[[35]](#references)</sup>",
+      "template": "Lambda Code Signing Config'i kaldırmak veya zayıflatmak, tek bypass yöntemi değildir. Zorunlu kılan configuration, **aktif bir AWS Signer profile version**'a güveniyorsa `signer:StartSigningJob` çağrısı yapma izni olan bir principal, saldırganın kontrolündeki bir ZIP dosyasını function'ın mevcut imza politikasından geçecek bir artifact'e dönüştürebilir. Ardından `lambda:UpdateFunctionCode`, Code Signing Config'i veya function role'ü değiştirmeden bu dosyayı deploy edebilir.<sup>[[23]](#references)[[34]](#references)[[35]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "91f943e379ee",
+      "tool": "az",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AZ - AWS - Lambda Privesc",
+      "raw_command": "Bu varyant, CSC’yi silmekten bilerek daha sessizdir: **hiçbir code-signing configuration değiştirilmez**, dolayısıyla tüm control-plane kontrolleri function’ın imzalı olduğunu ve enforcing durumda kaldığını göstermeye devam eder. Tek anormal olay, build pipeline’ına ait olmayan bir principal’dan `signer.amazonaws.com` içinde gerçekleşen `StartSigningJob` olayıdır — uyarı oluşturulması gereken olay budur ve yasal signing job’ları az sayıdaki sabit CI identity’sinden geldiğinden bunu baseline olarak belirlemek kolaydır. Bucket’ta data event’leri etkin değilse S3’teki staging trafiği görünmez.",
+      "template": "Bu varyant, CSC’yi silmekten bilerek daha sessizdir: **hiçbir code-signing configuration değiştirilmez**, dolayısıyla tüm control-plane kontrolleri function’ın imzalı olduğunu ve enforcing durumda kaldığını göstermeye devam eder. Tek anormal olay, build pipeline’ına ait olmayan bir principal’dan `signer.amazonaws.com` içinde gerçekleşen `StartSigningJob` olayıdır — uyarı oluşturulması gereken olay budur ve yasal signing job’ları az sayıdaki sabit CI identity’sinden geldiğinden bunu baseline olarak belirlemek kolaydır. Bucket’ta data event’leri etkin değilse S3’teki staging trafiği görünmez.",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "b5cda8e4ca47",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Lambda MicroVM’leri normal Lambda function’larından ayrıdır. Bir MicroVM **image ARN**’i üzerinde `lambda:CreateMicrovmShellAuthToken` izni olan bir principal, bu image’dan oluşturulmuş çalışan herhangi bir MicroVM için etkileşimli bir shell credential’ı oluşturabilir. API, runtime MicroVM ID’si kabul eder; ancak IAM yetkilendirmeyi `arn:aws:lambda:<region>:<account>:microvm-image:<name>` üzerinden yapar; runtime MicroVM’e özel bir ARN yoktur. MicroVM ID’si ve endpoint zaten biliniyorsa `iam:PassRole`, `lambda:RunMicrovm`, `lambda:GetMicrovm` veya `lambda:CreateMicrovmAuthToken` izni gerekmez.<sup>[[48]](#references)[[49]](#references)</sup>",
+      "template": "Lambda MicroVM’leri normal Lambda function’larından ayrıdır. Bir MicroVM **image ARN**’i üzerinde `lambda:CreateMicrovmShellAuthToken` izni olan bir principal, bu image’dan oluşturulmuş çalışan herhangi bir MicroVM için etkileşimli bir shell credential’ı oluşturabilir. API, runtime MicroVM ID’si kabul eder; ancak IAM yetkilendirmeyi `arn:aws:lambda:<region>:<account>:microvm-image:<name>` üzerinden yapar; runtime MicroVM’e özel bir ARN yoktur. MicroVM ID’si ve endpoint zaten biliniyorsa `iam:PassRole`, `lambda:RunMicrovm`, `lambda:GetMicrovm` veya `lambda:CreateMicrovmAuthToken` izni gerekmez.<sup>[[48]](#references)[[49]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "62046f8636cc",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Hedef çalışıyor olmalı ve AWS tarafından yönetilen `SHELL_INGRESS` network connector’ı kullanılarak başlatılmış olmalıdır. Çalışan bir MicroVM’e sonradan connector eklenemez. Token 1–60 dakika geçerlidir; uygulanabilir en kısa süreyi kullanın.<sup>[[50]](#references)[[51]](#references)</sup>",
+      "template": "Hedef çalışıyor olmalı ve AWS tarafından yönetilen `SHELL_INGRESS` network connector’ı kullanılarak başlatılmış olmalıdır. Çalışan bir MicroVM’e sonradan connector eklenemez. Token 1–60 dakika geçerlidir; uygulanabilir en kısa süreyi kullanın.<sup>[[50]](#references)[[51]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "a6fb67f228a3",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Döndürülen `authToken.\"X-aws-proxy-auth\"` değeri, bilinen MicroVM endpoint’indeki bir PTY WebSocket bağlantısında kimlik doğrulaması yapar. Lambda konsolundaki **Connect** akışı veya uyumlu bir istemci shell bağlantısı kurabilir. PTY doğrudan uygulama container’ında `uid=0(root)` olarak açıldı; AWS’nin sorun giderme örneğinde, ek bir container adımı bulunduğunda `ctr task ls` ve `ctr task exec` kullanan bir akış da belgelenmiştir. Lambda MicroVM yürütme rolü kimlik bilgileri, IMDSv2 aracılığıyla guest içinden kullanılabilir; bu nedenle container erişimi, rolü aktarmadan veya değiştirmeden, zaten iliştirilmiş yürütme rolünün kullanılmasını sağlayabilir.<sup>[[50]](#references)[[52]](#references)</sup>",
+      "template": "Döndürülen `authToken.\"X-aws-proxy-auth\"` değeri, bilinen MicroVM endpoint’indeki bir PTY WebSocket bağlantısında kimlik doğrulaması yapar. Lambda konsolundaki **Connect** akışı veya uyumlu bir istemci shell bağlantısı kurabilir. PTY doğrudan uygulama container’ında `uid=0(root)` olarak açıldı; AWS’nin sorun giderme örneğinde, ek bir container adımı bulunduğunda `ctr task ls` ve `ctr task exec` kullanan bir akış da belgelenmiştir. Lambda MicroVM yürütme rolü kimlik bilgileri, IMDSv2 aracılığıyla guest içinden kullanılabilir; bu nedenle container erişimi, rolü aktarmadan veya değiştirmeden, zaten iliştirilmiş yürütme rolünün kullanılmasını sağlayabilir.<sup>[[50]](#references)[[52]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "c7357d6fade6",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Tam olarak hedeflenen image’ı kapsayan bir saldırgan politikası yeterlidir. Shell token’ı, MicroVM keşfi, normal uygulama token’ı oluşturma, yaşam döngüsü işlemleri, `iam:PassRole` veya hedef verilere doğrudan izinler olmadan hedef PTY’ye bağlanabilir. Token’ı gizli tutun. Image tag’leri, `aws:ResourceTag/*` ile image izninin kapsamını daraltabilir; ancak tek bir image izni, o image’dan oluşturulan mevcut ve gelecekteki tüm runtime’ları kapsar.<sup>[[49]](#references)</sup>",
+      "template": "Tam olarak hedeflenen image’ı kapsayan bir saldırgan politikası yeterlidir. Shell token’ı, MicroVM keşfi, normal uygulama token’ı oluşturma, yaşam döngüsü işlemleri, `iam:PassRole` veya hedef verilere doğrudan izinler olmadan hedef PTY’ye bağlanabilir. Token’ı gizli tutun. Image tag’leri, `aws:ResourceTag/*` ile image izninin kapsamını daraltabilir; ancak tek bir image izni, o image’dan oluşturulan mevcut ve gelecekteki tüm runtime’ları kapsar.<sup>[[49]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "ce676a9a871c",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "**Gizlilik:** Yüksek. Token oluşturma, CloudTrail’in varsayılan olarak kaydetmediği bir Lambda MicroVM **data event**’idir. ID’yi ve endpoint’i zaten bilen bir çağıran, varsayılan olarak kaydedilen `ListMicrovms` ve `GetMicrovm` yönetim okuma işlemlerini atlayabilir; PTY trafiği de bir AWS API olayı değildir.<sup>[[53]](#references)</sup>",
+      "template": "**Gizlilik:** Yüksek. Token oluşturma, CloudTrail’in varsayılan olarak kaydetmediği bir Lambda MicroVM **data event**’idir. ID’yi ve endpoint’i zaten bilen bir çağıran, varsayılan olarak kaydedilen `ListMicrovms` ve `GetMicrovm` yönetim okuma işlemlerini atlayabilir; PTY trafiği de bir AWS API olayı değildir.<sup>[[53]](#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "7dcb89422c12",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "| `CreateMicrovmShellAuthToken` | Data (`lambda.amazonaws.com`, `AWS::Lambda::MicrovmImage`) | **Hayır** |",
+      "template": "| `CreateMicrovmShellAuthToken` | Data (`lambda.amazonaws.com`, `AWS::Lambda::MicrovmImage`) | **Hayır** |",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "6d721c261b6c",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [1] [AWS IAM Yetki Yükseltme – Yöntemler ve Azaltma](https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation/)",
+      "template": "- [1] [AWS IAM Yetki Yükseltme – Yöntemler ve Azaltma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "b9f22f5aa890",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [2] [AWS IAM Yetki Yükseltme - Yöntemler ve Azaltma - Bölüm 2](https://rhinosecuritylabs.com/aws/aws-privilege-escalation-methods-mitigation-part-2/)",
+      "template": "- [2] [AWS IAM Yetki Yükseltme - Yöntemler ve Azaltma - Bölüm 2]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "f3a685957a76",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [3] [Bir kullanıcıya AWS hizmetine rol geçirme izni verme](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html)",
+      "template": "- [3] [Bir kullanıcıya AWS hizmetine rol geçirme izni verme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "b3df21a94856",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [4] [İşlev erişim davranışını denetlemek için kaynak işlev ARN’sini kullanma - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/permissions-source-function-arn.html)",
+      "template": "- [4] [İşlev erişim davranışını denetlemek için kaynak işlev ARN’sini kullanma - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "3c6b285105eb",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [10] [Eğitim: AWS Lambda’yı Amazon DynamoDB streams ile kullanma](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb-example.html)",
+      "template": "- [10] [Eğitim: AWS Lambda’yı Amazon DynamoDB streams ile kullanma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "c9b130a0f670",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [18] [Lambda bağımlılıklarını katmanlarla yönetme - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)",
+      "template": "- [18] [Lambda bağımlılıklarını katmanlarla yönetme - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "5c86e8d12e4b",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [19] [Python Lambda işlevleri için .zip dosya arşivleriyle çalışma - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/python-package.html)",
+      "template": "- [19] [Python Lambda işlevleri için .zip dosya arşivleriyle çalışma - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "4a0b84414068",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [20] [Python Lambda işlevleri için katmanlarla çalışma - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/python-layers.html)",
+      "template": "- [20] [Python Lambda işlevleri için katmanlarla çalışma - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "5d251b93db3f",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [22] [Kullanıcılara Lambda katmanına erişim verme - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/permissions-user-layer.html)",
+      "template": "- [22] [Kullanıcılara Lambda katmanına erişim verme - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "0e2de268c923",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [23] [Lambda ile kod bütünlüğünü doğrulamak için kod imzalama kullanma - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html)",
+      "template": "- [23] [Lambda ile kod bütünlüğünü doğrulamak için kod imzalama kullanma - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "21d8d067e970",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [24] [Lambda için kod imzalama yapılandırmaları oluşturma - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning-create.html)",
+      "template": "- [24] [Lambda için kod imzalama yapılandırmaları oluşturma - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "ccf186272f96",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [28] [create-code-signing-config - AWS CLI Komut Referansı](https://docs.aws.amazon.com/cli/latest/reference/lambda/create-code-signing-config.html)",
+      "template": "- [28] [create-code-signing-config - AWS CLI Komut Referansı]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "bd777c86ac2f",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [29] [AWS Lambda için eylemler, kaynaklar ve koşul anahtarları](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awslambda.html)",
+      "template": "- [29] [AWS Lambda için eylemler, kaynaklar ve koşul anahtarları]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "d720b671285c",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [30] [Lambda’da kaynak tabanlı IAM politikalarını görüntüleme - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html)",
+      "template": "- [30] [Lambda’da kaynak tabanlı IAM politikalarını görüntüleme - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "81e0b3cb6a1e",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [34] [AWS Signer ile Lambda kodunu imzalama](https://docs.aws.amazon.com/lambda/latest/dg/governance-code-signing.html)",
+      "template": "- [34] [AWS Signer ile Lambda kodunu imzalama]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "308b0832e073",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [36] [AWS Signer için satır içi politikalar](https://docs.aws.amazon.com/signer/latest/developerguide/authen-inlinepolicies.html)",
+      "template": "- [36] [AWS Signer için satır içi politikalar]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "890da2fe13a7",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [37] [Lambda kod imzalama yapılandırmaları için IAM politikalarını yapılandırma](https://docs.aws.amazon.com/lambda/latest/dg/config-codesigning-policies.html)",
+      "template": "- [37] [Lambda kod imzalama yapılandırmaları için IAM politikalarını yapılandırma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "328ea4ede9a2",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [38] [Lambda için imzalama işi oluşturma](https://docs.aws.amazon.com/signer/latest/developerguide/signing-jobs-lambda.html)",
+      "template": "- [38] [Lambda için imzalama işi oluşturma]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "170f62ca4d77",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [39] [AWS Signer tarafından oluşturulan imzaları iptal etme](https://docs.aws.amazon.com/signer/latest/developerguide/revocation.html)",
+      "template": "- [39] [AWS Signer tarafından oluşturulan imzaları iptal etme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "2053e5174aba",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [41] [Provisioned concurrency’yi yapılandırma - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html)",
+      "template": "- [41] [Provisioned concurrency’yi yapılandırma - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "31c3c0cc022e",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [42] [Container image kullanarak Lambda işlevi oluşturma - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html)",
+      "template": "- [42] [Container image kullanarak Lambda işlevi oluşturma - AWS Lambda]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "60871492d7c0",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [43] [Özel bir depoya image göndermek için IAM izinleri - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-push-iam.html)",
+      "template": "- [43] [Özel bir depoya image göndermek için IAM izinleri - Amazon ECR]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "d4987006df86",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [44] [Image tag’lerinin üzerine yazılmasını önleme - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html)",
+      "template": "- [44] [Image tag’lerinin üzerine yazılmasını önleme - Amazon ECR]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "766998581abf",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [45] [CloudTrail ile Lambda API çağrılarını loglama](https://docs.aws.amazon.com/lambda/latest/dg/logging-using-cloudtrail.html)",
+      "template": "- [45] [CloudTrail ile Lambda API çağrılarını loglama]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "4197b73a47ed",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [46] [Lambda function URL’lerini izleme](https://docs.aws.amazon.com/lambda/latest/dg/urls-monitoring.html)",
+      "template": "- [46] [Lambda function URL’lerini izleme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "1861b9c11e20",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [49] [AWS Lambda için eylemler, kaynaklar ve koşul anahtarları](https://docs.aws.amazon.com/service-authorization/latest/reference/list_lambda.html)",
+      "template": "- [49] [AWS Lambda için eylemler, kaynaklar ve koşul anahtarları]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "19e0da4bfafd",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [50] [Lambda MicroVM shell erişimiyle ilgili sorunları giderme](https://docs.aws.amazon.com/lambda/latest/dg/microvms-troubleshooting.html)",
+      "template": "- [50] [Lambda MicroVM shell erişimiyle ilgili sorunları giderme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "3b06a3de5f40",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [51] [AWS Lambda MicroVM güvenliği](https://docs.aws.amazon.com/lambda/latest/dg/microvms-security.html)",
+      "template": "- [51] [AWS Lambda MicroVM güvenliği]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "f4427ca96d40",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [52] [Lambda MicroVM yürütme rolleri](https://docs.aws.amazon.com/lambda/latest/dg/microvms-integrations-claude-managed-agents.html)",
+      "template": "- [52] [Lambda MicroVM yürütme rolleri]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "05b0935998ec",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "- [53] [CloudTrail ile Lambda MicroVM’leri izleme](https://docs.aws.amazon.com/lambda/latest/dg/microvms-monitoring.html)",
+      "template": "- [53] [CloudTrail ile Lambda MicroVM’leri izleme]({{target_url}}",
+      "variables": [
+        "TARGET_URL"
+      ],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "c0b44ac8c438",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Lambda MicroVM’ler, Lambda işlevlerinden farklı, uzun süre çalışan ve snapshot tabanlı yalıtılmış işlem ortamlarıdır. Bir MicroVM image’ı dosya sistemini ve uygulamayı tanımlar; `RunMicrovm`, bir image’dan runtime’lar oluşturur ve ingress/egress ağ bağlayıcılarıyla isteğe bağlı bir yürütme rolü iliştirebilir. Guest, yürütme rolü kimlik bilgilerini normal Lambda işlevi ortam değişkenleri yerine IMDSv2 aracılığıyla alır.<sup>[[25]](../../aws-services/aws-lambda-enum.md#references)[[26]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "template": "Lambda MicroVM’ler, Lambda işlevlerinden farklı, uzun süre çalışan ve snapshot tabanlı yalıtılmış işlem ortamlarıdır. Bir MicroVM image’ı dosya sistemini ve uygulamayı tanımlar; `RunMicrovm`, bir image’dan runtime’lar oluşturur ve ingress/egress ağ bağlayıcılarıyla isteğe bağlı bir yürütme rolü iliştirebilir. Guest, yürütme rolü kimlik bilgilerini normal Lambda işlevi ortam değişkenleri yerine IMDSv2 aracılığıyla alır.<sup>[[25]](../../aws-services/aws-lambda-enum.md#references)[[26]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "fc0a7a77b816",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "CLI/API hizmet adı `lambda-microvms` olsa da IAM eylemleri `lambda:` önekini kullanır ve CloudTrail olayları `lambda.amazonaws.com` adını kullanır. Runtime token’ı ve yaşam döngüsü çağrıları, `AWS::Lambda::MicrovmImage` üzerindeki data event’leridir ve varsayılan olarak kapalıdır; image ve envanter okumaları management event’leridir.<sup>[[27]](../../aws-services/aws-lambda-enum.md#references)[[28]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "template": "CLI/API hizmet adı `lambda-microvms` olsa da IAM eylemleri `lambda:` önekini kullanır ve CloudTrail olayları `lambda.amazonaws.com` adını kullanır. Runtime token’ı ve yaşam döngüsü çağrıları, `AWS::Lambda::MicrovmImage` üzerindeki data event’leridir ve varsayılan olarak kapalıdır; image ve envanter okumaları management event’leridir.<sup>[[27]](../../aws-services/aws-lambda-enum.md#references)[[28]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "05ec60eed057",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Pay special attention to runtimes with an `executionRoleArn`, sensitive VPC egress connectors, broad ingress veya AWS-managed `SHELL_INGRESS` connector. Runtime token işlemleri için IAM yetkilendirmesi, runtime başına bir ARN yerine **image ARN** kapsamında uygulanır. Bu nedenle bir image için verilen izin, o image'dan oluşturulan tüm runtimes için geçerlidir.<sup>[[27]](../../aws-services/aws-lambda-enum.md#references)[[29]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "template": "Pay special attention to runtimes with an `executionRoleArn`, sensitive VPC egress connectors, broad ingress veya AWS-managed `SHELL_INGRESS` connector. Runtime token işlemleri için IAM yetkilendirmesi, runtime başına bir ARN yerine **image ARN** kapsamında uygulanır. Bu nedenle bir image için verilen izin, o image'dan oluşturulan tüm runtimes için geçerlidir.<sup>[[27]](../../aws-services/aws-lambda-enum.md#references)[[29]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "0260112a07d0",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Connector enumeration ve network redirection, [Lambda post exploitation](../../aws-post-exploitation/aws-lambda-post-exploitation/README.md#lambda-core-network-connectors) bölümünde belgelenmiştir. Connector envanteri tek başına MicroVM execution role için izin vermez.",
+      "template": "Connector enumeration ve network redirection, [Lambda post exploitation](../../aws-post-exploitation/aws-lambda-post-exploitation/README.md#lambda-core-network-connectors) bölümünde belgelenmiştir. Connector envanteri tek başına MicroVM execution role için izin vermez.",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "8651d347fa98",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "**Lambda functions'ı bir şey olduğunda veya belirli bir süre geçtiğinde çalıştırabilmeniz**, Lambda'yı persistence sağlamak ve tespit edilmekten kaçınmak için yaygın ve kullanışlı bir yöntem hâline getirir.<sup>[[8]](../../aws-persistence/aws-lambda-persistence/README.md#references)</sup> Burada, **Lambda'lar oluşturarak AWS'deki varlığınızı daha gizli hâle getirmek** için bazı fikirler bulabilirsiniz.",
+      "template": "**Lambda functions'ı bir şey olduğunda veya belirli bir süre geçtiğinde çalıştırabilmeniz**, Lambda'yı persistence sağlamak ve tespit edilmekten kaçınmak için yaygın ve kullanışlı bir yöntem hâline getirir.<sup>[[8]](../../aws-persistence/aws-lambda-persistence/README.md#references)</sup> Burada, **Lambda'lar oluşturarak AWS'deki varlığınızı daha gizli hâle getirmek** için bazı fikirler bulabilirsiniz.",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "367905a85d99",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - AWS - Lambda Privesc",
+      "raw_command": "Aşağıdaki AWS CLI işlemleri Lambda account settings, functions ve configuration, indirilebilir code, URLs, resource policies, versions, aliases, layers, event-source mappings ve code-signing configuration bilgilerini enumerate eder. Güncel `ListFunctions` ve `ListVersionsByFunction` yanıtları düz metin environment variables içerebilir; bu nedenle yalnızca listeleme erişimini bile hassas kabul edin.<sup>[[15]](../../aws-services/aws-lambda-enum.md#references)[[22]](../../aws-services/aws-lambda-enum.md#references)[[23]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "template": "Aşağıdaki AWS CLI işlemleri Lambda account settings, functions ve configuration, indirilebilir code, URLs, resource policies, versions, aliases, layers, event-source mappings ve code-signing configuration bilgilerini enumerate eder. Güncel `ListFunctions` ve `ListVersionsByFunction` yanıtları düz metin environment variables içerebilir; bu nedenle yalnızca listeleme erişimini bile hassas kabul edin.<sup>[[15]](../../aws-services/aws-lambda-enum.md#references)[[22]](../../aws-services/aws-lambda-enum.md#references)[[23]](../../aws-services/aws-lambda-enum.md#references)</sup>",
+      "variables": [],
+      "doc_title": "AWS - Lambda Privesc",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-lambda-privesc/README.md",
+      "lang": "cloud"
+    },
+    {
+      "id": "0af04427ae15",
+      "tool": "aws",
+      "category": "cloud",
+      "platform": "Linux CLI",
+      "pillar": "red",
+      "opsec": "stealth",
+      "title": "AWS - iam:PassRole, codestar:CreateProject",
+      "raw_command": "Örnek rol ARN'si hesaba özeldir; bunu hedef hesapta bulunan ve çağıranın geçirme yetkisine sahip olduğu bir rolle değiştirin. `iam:PassRole`, rolü ve izinlerini servise aktarır ve AWS'nin belgelenmiş kuralları uyarınca aynı hesaptaki roller için geçerlidir.<sup>[[4]](#references)[[5]](#references)</sup>",
+      "template": "Örnek rol ARN'si hesaba özeldir; bunu hedef hesapta bulunan ve çağıranın geçirme yetkisine sahip olduğu bir rolle değiştirin. `iam:PassRole`, rolü ve izinlerini servise aktarır ve AWS'nin belgelenmiş kuralları uyarınca aynı hesaptaki roller için geçerlidir.<sup>[[4]](#references)[[5]](#references)</sup>",
+      "variables": [],
+      "doc_title": "iam:PassRole, codestar:CreateProject",
+      "doc_path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-codestar-privesc/iam-passrole-codestar-createproject.md",
       "lang": "cloud"
     },
     {

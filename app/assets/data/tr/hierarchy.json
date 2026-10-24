@@ -13333,7 +13333,7 @@
           {
             "id": "62a0b1f032b6",
             "title": "AWS - IoT TwinMaker Post Exploitation",
-            "description": "A custom component type can nominate Lambda functions for schemaInitializer, dataReader and dataWriter. TwinMaker invokes the selected function using the workspace execution role. ...",
+            "description": "Özel bir component type, schemaInitializer, dataReader ve dataWriter için Lambda fonksiyonları belirleyebilir. TwinMaker, seçilen fonksiyonu workspace execution role kullanarak çağ...",
             "path": "pentesting-cloud/aws-security/aws-post-exploitation/aws-iot-twinmaker-post-exploitation/README.md",
             "is_readme": true
           },
@@ -14092,14 +14092,14 @@
           {
             "id": "7d74350b8870",
             "title": "AWS - Mwaa Privilege Escalation",
-            "description": "The read actions above disclose existing workflows. CreateWorkflow goes further: it stands up a brand-new serverless Airflow workflow from an attacker-supplied YAML definition in S...",
+            "description": "Yukarıdaki okuma eylemleri mevcut workflow'ları açığa çıkarır. CreateWorkflow daha da ileri gider: S3'te saldırganın sağladığı bir YAML tanımından, arayanın seçtiği bir yürütme rol...",
             "path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-mwaa-privesc/README.md",
             "is_readme": true
           },
           {
             "id": "d9691629ce9c",
             "title": "AWS - Codeartifact Privilege Escalation",
-            "description": "Write access to a trusted CodeArtifact package can become code execution in a later build or application dependency refresh. Package assets are not freely mutable: CodeArtifact rej...",
+            "description": "Güvenilen bir CodeArtifact paketine yazma erişimi, sonraki bir derlemede veya uygulama bağımlılıkları yenilendiğinde kod çalıştırmaya dönüşebilir. Paket öğeleri serbestçe değiştiri...",
             "path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-codeartifact-privesc/README.md",
             "is_readme": true
           },
@@ -14127,14 +14127,14 @@
           {
             "id": "7c45988bb9ec",
             "title": "AWS - PCS Privilege Escalation",
-            "description": "PCS creates a managed Secrets Manager secret named like pcs!slurm-secret-<cluster-id>. The GetCluster response discloses its exact ARN and version under slurmConfiguration.authKey....",
+            "description": "PCS, pcs!slurm-secret-<cluster-id> biçiminde adlandırılmış, yönetilen bir Secrets Manager secret oluşturur. GetCluster yanıtı, slurmConfiguration.authKey altında secret'ın tam ARN'...",
             "path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-pcs-privesc/README.md",
             "is_readme": true
           },
           {
             "id": "222fb05c3e1f",
             "title": "AWS - Greengrass Privilege Escalation",
-            "description": "CreateComponentVersion registers a component whose recipe includes a lifecycle run/install script (arbitrary shell/commands executed on the device, by default as the Greengrass sys...",
+            "description": "CreateComponentVersion, tarifinde bir lifecycle run/install betiği bulunan bir bileşeni kaydeder (cihazda varsayılan olarak Greengrass sistem kullanıcısı, çoğu zaman root olarak ça...",
             "path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-greengrass-privesc/README.md",
             "is_readme": true
           },
@@ -20300,7 +20300,7 @@
           {
             "id": "72aa3b63627c",
             "title": "GCP - Dataform Post Exploitation",
-            "description": "The actions below invoke existing saved workflows and compilation results. Their effects depend on the saved configuration; invocation alone does not grant the caller the workflow ...",
+            "description": "Aşağıdaki işlemler, önceden kaydedilmiş iş akışlarını ve derleme sonuçlarını çağırır. Etkileri kaydedilmiş yapılandırmaya bağlıdır; yalnızca çağrıda bulunmak, çağırana iş akışının ...",
             "path": "pentesting-cloud/gcp-security/gcp-post-exploitation/gcp-dataform-post-exploitation.md",
             "is_readme": false
           },
@@ -22846,7 +22846,7 @@
           {
             "id": "61f56f04123b",
             "title": "GCP - Agent Identity Auth Manager Credential Access (moved)",
-            "description": "The privilege escalation techniques have moved to the GCP privilege escalation page.",
+            "description": "Privilege escalation teknikleri GCP privilege escalation sayfasına taşındı.",
             "path": "pentesting-cloud/gcp-security/gcp-to-workspace-pivoting/gcp-agent-identity-auth-manager-privesc.md",
             "is_readme": false
           },
@@ -22860,7 +22860,7 @@
           {
             "id": "f2e20f903b9d",
             "title": "GCP - Workspace Add-on Deployment Takeover (moved)",
-            "description": "The privilege escalation techniques have moved to the GCP privilege escalation page.",
+            "description": "Privilege escalation teknikleri GCP privilege escalation sayfasına taşındı.",
             "path": "pentesting-cloud/gcp-security/gcp-to-workspace-pivoting/gcp-workspace-addons-privesc.md",
             "is_readme": false
           },
@@ -23377,28 +23377,28 @@
           {
             "id": "821f42d196ef",
             "title": "Kyverno basics (former URL)",
-            "description": "Kyverno policy concepts and examples are now in Kyverno basics. Policy bypass notes are in Kyverno bypass.",
+            "description": "Kyverno policy kavramları ve örnekleri artık Kyverno basics bölümünde. Policy bypass notları Kyverno bypass bölümünde.",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kyverno/README.md",
             "is_readme": true
           },
           {
             "id": "b0992de245f1",
             "title": "Kyverno bypass (former URL)",
-            "description": "Policy exclusions alone do not grant another principal's permissions. See Kyverno bypass.",
+            "description": "Policy exclusions tek başına başka bir principal'a ait izinleri vermez. Bkz. Kyverno bypass.",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/kyverno/kubernetes-kyverno-bypass.md",
             "is_readme": false
           },
           {
             "id": "300cf8f130f0",
             "title": "OPA Gatekeeper basics (former URL)",
-            "description": "OPA Gatekeeper policy concepts and examples are now in OPA Gatekeeper basics. Policy bypass notes are in OPA Gatekeeper bypass.",
+            "description": "OPA Gatekeeper policy kavramları ve örnekleri artık OPA Gatekeeper temel bilgileri sayfasında. Policy bypass notları OPA Gatekeeper bypass sayfasında.",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/opa-gatekeeper/README.md",
             "is_readme": true
           },
           {
             "id": "e27af827eecc",
             "title": "OPA Gatekeeper bypass (former URL)",
-            "description": "Policy exclusions alone do not grant another principal's permissions. See OPA Gatekeeper bypass.",
+            "description": "Policy istisnaları tek başına başka bir principal'ın izinlerini vermez. Bkz. OPA Gatekeeper bypass.",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/opa-gatekeeper/kubernetes-opa-gatekeeper-bypass.md",
             "is_readme": false
           },
@@ -23426,14 +23426,14 @@
           {
             "id": "a7c035bdd074",
             "title": "External Secrets Operator (former URL)",
-            "description": "The External Secrets Operator walkthrough describes copying provider secrets into a namespace. Reading an arbitrary secret does not establish a known principal or additional permis...",
+            "description": "External Secrets Operator kılavuzu, sağlayıcı secret'larının bir namespace'e kopyalanmasını açıklar. Rastgele bir secret'ı okumak, bilinen bir principal veya ek izinler olduğunu gö...",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/external-secrets-operator.md",
             "is_readme": false
           },
           {
             "id": "d5929e6ded8c",
             "title": "API Object Operations (former URL)",
-            "description": "The raw API examples show how to submit objects with an existing grant. See API object operations for the request examples and the linked privilege escalation paths.",
+            "description": "Ham API örnekleri, mevcut bir grant ile nesnelerin nasıl gönderileceğini gösterir. İstek örnekleri ve bağlantılı privilege escalation yolları için API nesne işlemleri sayfasına bak...",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/api-object-operations.md",
             "is_readme": false
           }
@@ -23572,7 +23572,7 @@
           {
             "id": "b5fb6b4a2958",
             "title": "K8s - Admission Control Bypass",
-            "description": "Weakening an admission guardrail can allow an otherwise denied request. A bypass alone does not grant a new principal credential or RBAC permission. An escalation path requires a s...",
+            "description": "Bir admission guardrail'ı zayıflatmak, normalde reddedilecek bir isteğe izin verilmesini sağlayabilir. Tek başına bir bypass, yeni bir principal kimlik bilgisi veya RBAC izni kazan...",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-post-exploitation/admission-control-bypass.md",
             "is_readme": false
           },
@@ -23706,7 +23706,7 @@
           {
             "id": "e24e4e2347fd",
             "title": "OpenShift SCC overview (former URL)",
-            "description": "In OpenShift, SCC stands for Security Context Constraints. SCCs are cluster-level policies used during admission to control the permissions available to pods and the conditions und...",
+            "description": "OpenShift'te SCC, Security Context Constraints (Güvenlik Bağlamı Kısıtlamaları) anlamına gelir. SCC'ler, pod'lara sunulan izinleri ve bir pod'un çalışabileceği koşulları denetlemek...",
             "path": "pentesting-cloud/openshift-pentesting/openshift-scc.md",
             "is_readme": false
           }
