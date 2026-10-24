@@ -29,6 +29,7 @@ echo "  • Flutter: $(flutter --version | head -n 1)"
 echo ""
 echo "[2/3] 📚 HackTricks Dokümanları Taranıyor (TR & EN)..."
 python3 "$PROJECT_DIR/scripts/build_hacktricks_content.py"
+python3 "$PROJECT_DIR/scripts/extract_hacktricks_commands.py"
 
 mkdir -p "$DIST_DIR"
 cd "$APP_DIR"

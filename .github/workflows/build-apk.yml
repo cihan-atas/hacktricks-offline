@@ -37,6 +37,7 @@ jobs:
           chmod +x ./scripts/fetch_and_build.sh
           ./scripts/fetch_and_build.sh || true
           python3 ./scripts/build_hacktricks_content.py
+          python3 ./scripts/extract_hacktricks_commands.py
 
       - name: Build Flutter APK
         run: |
@@ -64,6 +65,7 @@ jobs:
           name: HackTricks Vault v2.0.${{ github.run_number }} (AI & TTS)
           body: |
             Yeni Nesil HackTricks Vault Android Uygulaması!
+            - ⚡ Arsenal: Canlı Parametreli Pentest Komut Oluşturucu (590+ Komut, 6 Kategori)
             - 🎨 Modern Cyber Dark Mobil Tasarım
             - 🔊 Floating TTS Ses Motoru (Türkçe & İngilizce)
             - ✨ AI Siber Güvenlik Asistanı (Gemini / Groq / OpenRouter)

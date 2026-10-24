@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'screens/home_screen.dart';
+import 'screens/command_generator_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/bookmarks_screen.dart';
 import 'screens/settings_screen.dart';
 import 'services/content_service.dart';
+import 'services/command_service.dart';
 import 'services/app_state.dart';
 import 'services/tts_service.dart';
 import 'services/ai_service.dart';
@@ -71,6 +73,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
       _ttsService.init(),
       _aiService.init(),
       _scratchpadService.init(),
+      CommandService().init(),
     ]);
     if (mounted) {
       setState(() {
@@ -132,6 +135,7 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
 
     final screens = [
       HomeScreen(),
+      const CommandGeneratorScreen(),
       const SearchScreen(),
       const BookmarksScreen(),
       const SettingsScreen(),
@@ -174,6 +178,11 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
               icon: const Icon(Icons.home_outlined),
               selectedIcon: const Icon(Icons.home, color: AppTheme.redTeam),
               label: isTr ? 'Ana Sayfa' : 'Home',
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.terminal_outlined),
+              selectedIcon: const Icon(Icons.terminal, color: AppTheme.redTeam),
+              label: isTr ? 'Arsenal' : 'Arsenal',
             ),
             NavigationDestination(
               icon: const Icon(Icons.search_outlined),

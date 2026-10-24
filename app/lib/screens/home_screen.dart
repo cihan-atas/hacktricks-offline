@@ -6,6 +6,7 @@ import 'article_screen.dart';
 import 'pillar_screen.dart';
 import 'search_screen.dart';
 import 'scratchpad_screen.dart';
+import 'command_generator_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final ContentService contentService = ContentService();
@@ -349,8 +350,92 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 14),
               ],
+
+              // 3.5 Arsenal Canlı Komut Üretici Kartı
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const CommandGeneratorScreen()),
+                  );
+                },
+                borderRadius: BorderRadius.circular(12),
+                child: Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        AppTheme.bgCard,
+                        const Color(0xFF10b981).withAlpha(20),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: const Color(0xFF10b981).withAlpha(100)),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF10b981).withAlpha(30),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Icon(Icons.terminal, color: Color(0xFF10b981), size: 24),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  isTr ? 'KOMUT ARSENALİ' : 'COMMAND ARSENAL',
+                                  style: const TextStyle(
+                                    color: Color(0xFF10b981),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 1,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF10b981).withAlpha(40),
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  child: const Text(
+                                    '590+ Canlı',
+                                    style: TextStyle(color: Color(0xFF10b981), fontSize: 10, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              isTr
+                                  ? 'Hedef IP ve dinleyici parametrelerine göre canlı derlenen pentest komutları'
+                                  : 'Live-compiled pentest commands customized for your target IP and listeners',
+                              style: const TextStyle(color: AppTheme.textMuted, fontSize: 11.5),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      const Icon(Icons.arrow_forward_ios, color: AppTheme.textMuted, size: 14),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
 
               // 4. Kategoriler Başlığı
               Row(

@@ -66,6 +66,17 @@ class ScratchpadService extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> appendContent(String note, {String title = 'Arsenal Komutu', String category = 'Arsenal'}) async {
+    final newItem = ScratchpadItem(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      title: title,
+      content: note,
+      category: category,
+      updatedAt: DateTime.now(),
+    );
+    await saveItem(newItem);
+  }
+
   Future<void> deleteItem(String id) async {
     _items.removeWhere((i) => i.id == id);
     await _persist();
