@@ -357,6 +357,17 @@ def extract_commands_from_file(filepath: Path, lang: str):
             if not tool:
                 continue
 
+            # Sahte veya açıklama metinlerini (İngilizce cümleleri) filtrele
+            tokens = full_cmd.split()
+            first = tokens[0].lower().strip('./') if tokens else ''
+            if first in ['sudo', 'proxychains', 'proxychains4', 'doas'] and len(tokens) > 1:
+                first = tokens[1].lower().strip('./')
+            if not (first == tool or first.startswith(tool) or tool.startswith(first)):
+                if not re.search(r'[-/\\|>\$\"\']', full_cmd):
+                    continue
+                if re.match(r'^(?:run|use|install|in order to|you can|execute|start|please|note|the|this|to)\b', full_cmd, re.IGNORECASE):
+                    continue
+
             tool_meta = TOOL_DEFINITIONS.get(tool, {
                 'cat': 'recon', 'plat': 'Linux CLI', 'opsec': 'noisy', 'pillar': 'red'
             })

@@ -34,9 +34,17 @@ jobs:
 
       - name: Fetch and Build HackTricks Content (EN, TR & CLOUD)
         run: |
-          chmod +x ./scripts/fetch_and_build.sh
-          ./scripts/fetch_and_build.sh || true
-          if [ ! -d "sources/hacktricks-cloud" ]; then
+          mkdir -p sources
+          if [ ! -d "sources/hacktricks-en/.git" ]; then
+            echo "Cloning HackTricks EN (master)..."
+            git clone --depth 1 --branch master https://github.com/HackTricks-wiki/hacktricks.git sources/hacktricks-en
+          fi
+          if [ ! -d "sources/hacktricks-tr/.git" ]; then
+            echo "Cloning HackTricks TR (tr)..."
+            git clone --depth 1 --branch tr https://github.com/HackTricks-wiki/hacktricks.git sources/hacktricks-tr
+          fi
+          if [ ! -d "sources/hacktricks-cloud/.git" ]; then
+            echo "Cloning HackTricks Cloud..."
             git clone --depth 1 https://github.com/HackTricks-wiki/hacktricks-cloud.git sources/hacktricks-cloud
           fi
           python3 ./scripts/build_hacktricks_content.py

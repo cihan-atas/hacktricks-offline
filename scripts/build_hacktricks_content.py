@@ -115,7 +115,9 @@ def extract_description(content: str, fallback_title: str) -> str:
 def get_cloud_pillar_id(link: str) -> str:
     """Bulut dokümanının dosya yoluna göre ilgili bulut kategorisini belirler."""
     l = link.lower()
-    if 'aws-security' in l or '/aws/' in l:
+    if 'workspace-security' in l or 'gws-' in l:
+        return 'cloud_other'
+    elif 'aws-security' in l or '/aws/' in l:
         return 'cloud_aws'
     elif 'azure-security' in l or '/azure/' in l or 'entra' in l:
         return 'cloud_azure'
@@ -303,7 +305,8 @@ def parse_cloud_wiki(src_dir: Path, lang: str):
         }
 
         curr_mod = current_modules.get(pid)
-        if indent == 0 or curr_mod is None:
+        is_new_module = (indent <= 2) or curr_mod is None
+        if is_new_module:
             curr_mod = {
                 'id': art_id,
                 'folder': link.split('/')[0] if '/' in link else '',
@@ -351,10 +354,24 @@ def build_combined_language(main_src: Path, cloud_src: Path, out_dir: Path, lang
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # 1. Ana HackTricks
+    if not (main_src / "SUMMARY.md").exists():
+        if lang == 'tr' and (EN_SRC / "SUMMARY.md").exists():
+            print(f"[!] UYARI: {main_src} bulunamadı! EN kaynaklarına fallback yapılıyor...")
+            main_src = EN_SRC
+        else:
+            raise FileNotFoundError(f"HATA: HackTricks SUMMARY.md bulunamadı: {main_src}")
+
     main_pillars, main_articles, main_search = parse_main_wiki(main_src, color_offset=0)
+    if len(main_pillars) == 0:
+        raise ValueError(f"HATA: {main_src} dizininden hiçbir ana kategori çıkarılamadı!")
 
     # 2. HackTricks Cloud
+    if not (cloud_src / "SUMMARY.md").exists():
+        raise FileNotFoundError(f"HATA: HackTricks Cloud SUMMARY.md bulunamadı: {cloud_src}")
+
     cloud_pillars, cloud_articles, cloud_search = parse_cloud_wiki(cloud_src, lang=lang)
+    if len(cloud_pillars) == 0:
+        raise ValueError(f"HATA: {cloud_src} dizininden hiçbir bulut kategorisi çıkarılamadı!")
 
     # 3. Birleştir
     all_pillars = main_pillars + cloud_pillars

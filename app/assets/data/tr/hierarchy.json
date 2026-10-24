@@ -11190,14 +11190,34 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "265e65fb2d7e",
+        "folder": "pentesting-cloud",
+        "title": "AWS Permissions Categories",
+        "path": "pentesting-cloud/aws-security/permission-risk-categorizations.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "265e65fb2d7e",
             "title": "AWS Permissions Categories",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/permission-risk-categorizations.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "95c767afa520",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Basic Information",
+        "path": "pentesting-cloud/aws-security/aws-basic-information/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "95c767afa520",
             "title": "AWS - Basic Information",
@@ -11211,14 +11231,34 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/aws-basic-information/aws-federation-abuse.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "598ef4e8f947",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Permissions for a Pentest",
+        "path": "pentesting-cloud/aws-security/aws-permissions-for-a-pentest.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "598ef4e8f947",
             "title": "AWS - Permissions for a Pentest",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/aws-permissions-for-a-pentest.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "3f8954a56264",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Cross-Account Attacks",
+        "path": "pentesting-cloud/aws-security/aws-cross-account-attacks/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "3f8954a56264",
             "title": "AWS - Cross-Account Attacks",
@@ -11267,7 +11307,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/aws-cross-account-attacks/detection-and-hardening.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "f8fc2ec0d3bf",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Persistence",
+        "path": "pentesting-cloud/aws-security/aws-persistence/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "f8fc2ec0d3bf",
             "title": "AWS - Persistence",
@@ -12184,7 +12234,17 @@
             "description": "{{#include ../../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/aws-persistence/aws-workspaces-web-persistence/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "5e7e1ff758ed",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Post Exploitation",
+        "path": "pentesting-cloud/aws-security/aws-post-exploitation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "5e7e1ff758ed",
             "title": "AWS - Post Exploitation",
@@ -13962,7 +14022,17 @@
             "description": "{{#include ../../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/aws-post-exploitation/aws-ssm-parameter-and-command-access-post-exploitation/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "286ca64b9a50",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Privilege Escalation",
+        "path": "pentesting-cloud/aws-security/aws-privilege-escalation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "286ca64b9a50",
             "title": "AWS - Privilege Escalation",
@@ -14921,7 +14991,17 @@
             "description": "{{#include ../../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/aws-privilege-escalation/aws-workdocs-privesc/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "cf9e3695a1ce",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Services",
+        "path": "pentesting-cloud/aws-security/aws-services/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "cf9e3695a1ce",
             "title": "AWS - Services",
@@ -16531,7 +16611,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/aws-security/aws-services/aws-other-services-enum.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "07f700640c07",
+        "folder": "pentesting-cloud",
+        "title": "AWS - Unauthenticated Enum & Access",
+        "path": "pentesting-cloud/aws-security/aws-unauthenticated-enum-access/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "07f700640c07",
             "title": "AWS - Unauthenticated Enum & Access",
@@ -16915,41 +17005,6 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-cross-project-attacks/organization-and-central-project-pivots.md",
             "is_readme": false
-          },
-          {
-            "id": "0b2c1a8a6840",
-            "title": "GWS - Workspace Sync Attacks (GCPW, GCDS, GPS, Directory Sync with AD & EntraID)",
-            "description": "{{#include ../../../banners/hacktricks-training.md}}",
-            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/README.md",
-            "is_readme": true
-          },
-          {
-            "id": "bc8cf9525854",
-            "title": "GWS - Admin Directory Sync",
-            "description": "{{#include ../../../banners/hacktricks-training.md}}",
-            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gws-admin-directory-sync.md",
-            "is_readme": false
-          },
-          {
-            "id": "9758242b30ac",
-            "title": "GCDS - Google Cloud Directory Sync",
-            "description": "{{#include ../../../banners/hacktricks-training.md}}",
-            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gcds-google-cloud-directory-sync.md",
-            "is_readme": false
-          },
-          {
-            "id": "fbefc64e92ab",
-            "title": "GCPW - Google Credential Provider for Windows",
-            "description": "{{#include ../../../banners/hacktricks-training.md}}",
-            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gcpw-google-credential-provider-for-windows.md",
-            "is_readme": false
-          },
-          {
-            "id": "18812fe6a01a",
-            "title": "GPS - Google Password Sync",
-            "description": "{{#include ../../../banners/hacktricks-training.md}}",
-            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gps-google-password-sync.md",
-            "is_readme": false
           }
         ]
       },
@@ -16967,14 +17022,34 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "7402c9e7fbf2",
+        "folder": "pentesting-cloud",
+        "title": "Azure Permissions Categories",
+        "path": "pentesting-cloud/azure-security/permission-risk-categorizations.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "7402c9e7fbf2",
             "title": "Azure Permissions Categories",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/permission-risk-categorizations.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "02b7b26ac873",
+        "folder": "pentesting-cloud",
+        "title": "Az - Basic Information",
+        "path": "pentesting-cloud/azure-security/az-basic-information/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "02b7b26ac873",
             "title": "Az - Basic Information",
@@ -16995,7 +17070,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-basic-information/az-tokens-and-public-applications.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "5f8eafd3e72d",
+        "folder": "pentesting-cloud",
+        "title": "Az - Cross-Tenant & Cross-Subscription Attacks",
+        "path": "pentesting-cloud/azure-security/az-cross-tenant-and-cross-subscription-attacks/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "5f8eafd3e72d",
             "title": "Az - Cross-Tenant & Cross-Subscription Attacks",
@@ -17037,14 +17122,34 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-cross-tenant-and-cross-subscription-attacks/detection-and-hardening.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "abaecd5faf21",
+        "folder": "pentesting-cloud",
+        "title": "Az - Enumeration Tools",
+        "path": "pentesting-cloud/azure-security/az-enumeration-tools.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "abaecd5faf21",
             "title": "Az - Enumeration Tools",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-enumeration-tools.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "4e207bbc7390",
+        "folder": "pentesting-cloud",
+        "title": "Az - Unauthenticated Enum & Initial Entry",
+        "path": "pentesting-cloud/azure-security/az-unauthenticated-enum-and-initial-entry/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "4e207bbc7390",
             "title": "Az - Unauthenticated Enum & Initial Entry",
@@ -17226,7 +17331,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-unauthenticated-enum-and-initial-entry/az-front-door-unauth.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "fa7d96e74ad8",
+        "folder": "pentesting-cloud",
+        "title": "Az - Services",
+        "path": "pentesting-cloud/azure-security/az-services/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "fa7d96e74ad8",
             "title": "Az - Services",
@@ -18010,14 +18125,34 @@
             "description": "{{#include ../../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-services/vms/az-azure-network.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "8893ced09ea1",
+        "folder": "pentesting-cloud",
+        "title": "Az - Permissions for a Pentest",
+        "path": "pentesting-cloud/azure-security/az-permissions-for-a-pentest.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "8893ced09ea1",
             "title": "Az - Permissions for a Pentest",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-permissions-for-a-pentest.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "d5c9bc40e300",
+        "folder": "pentesting-cloud",
+        "title": "Az - Lateral Movement (Cloud - On-Prem)",
+        "path": "pentesting-cloud/azure-security/az-lateral-movement-cloud-on-prem/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "d5c9bc40e300",
             "title": "Az - Lateral Movement (Cloud - On-Prem)",
@@ -18129,7 +18264,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-lateral-movement-cloud-on-prem/az-seamless-sso.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "89c13efb0fb8",
+        "folder": "pentesting-cloud",
+        "title": "Az - Post Exploitation",
+        "path": "pentesting-cloud/azure-security/az-post-exploitation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "89c13efb0fb8",
             "title": "Az - Post Exploitation",
@@ -18654,7 +18799,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-post-exploitation/az-front-door-credential-skimming-post-exploitation.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "ae2f373f2d13",
+        "folder": "pentesting-cloud",
+        "title": "Az - Privilege Escalation",
+        "path": "pentesting-cloud/azure-security/az-privilege-escalation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "ae2f373f2d13",
             "title": "Az - Privilege Escalation",
@@ -19256,7 +19411,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/azure-security/az-privilege-escalation/az-analysis-services-privesc.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "d5a94d43db08",
+        "folder": "pentesting-cloud",
+        "title": "Az - Persistence",
+        "path": "pentesting-cloud/azure-security/az-persistence/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "d5a94d43db08",
             "title": "Az - Persistence",
@@ -19626,14 +19791,34 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "a826d7c12ea7",
+        "folder": "pentesting-cloud",
+        "title": "GCP Permissions Categories",
+        "path": "pentesting-cloud/gcp-security/permission-risk-categorizations.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "a826d7c12ea7",
             "title": "GCP Permissions Categories",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/permission-risk-categorizations.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "d63b99a29b7e",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Basic Information",
+        "path": "pentesting-cloud/gcp-security/gcp-basic-information/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "d63b99a29b7e",
             "title": "GCP - Basic Information",
@@ -19647,14 +19832,34 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-basic-information/gcp-federation-abuse.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "2b6c05ea08b3",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Permissions for a Pentest",
+        "path": "pentesting-cloud/gcp-security/gcp-permissions-for-a-pentest.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "2b6c05ea08b3",
             "title": "GCP - Permissions for a Pentest",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-permissions-for-a-pentest.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "fd6499359b1c",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Cross-Project Attacks",
+        "path": "pentesting-cloud/gcp-security/gcp-cross-project-attacks/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "fd6499359b1c",
             "title": "GCP - Cross-Project Attacks",
@@ -19689,7 +19894,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-cross-project-attacks/detection-and-hardening.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "1d7a43eaad03",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Post Exploitation",
+        "path": "pentesting-cloud/gcp-security/gcp-post-exploitation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "1d7a43eaad03",
             "title": "GCP - Post Exploitation",
@@ -20487,7 +20702,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-post-exploitation/gcp-agent-identity-auth-manager-post-exploitation.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "9d22380f3621",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Privilege Escalation",
+        "path": "pentesting-cloud/gcp-security/gcp-privilege-escalation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "9d22380f3621",
             "title": "GCP - Privilege Escalation",
@@ -21124,7 +21349,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-privilege-escalation/gcp-vm-migration-privesc.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "9c7787ba741e",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Persistence",
+        "path": "pentesting-cloud/gcp-security/gcp-persistence/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "9c7787ba741e",
             "title": "GCP - Persistence",
@@ -21600,7 +21835,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-persistence/gcp-bare-metal-solution-persistence.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "75ab32307445",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Services",
+        "path": "pentesting-cloud/gcp-security/gcp-services/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "75ab32307445",
             "title": "GCP - Services",
@@ -22580,7 +22825,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-services/gcp-workspace-addons-enum.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "3bfa27a96392",
+        "folder": "pentesting-cloud",
+        "title": "GCP <--> Workspace Pivoting",
+        "path": "pentesting-cloud/gcp-security/gcp-to-workspace-pivoting/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "3bfa27a96392",
             "title": "GCP <--> Workspace Pivoting",
@@ -22615,7 +22870,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/gcp-security/gcp-to-workspace-pivoting/gcp-understanding-domain-wide-delegation.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "a999cb786fcc",
+        "folder": "pentesting-cloud",
+        "title": "GCP - Unauthenticated Enum & Access",
+        "path": "pentesting-cloud/gcp-security/gcp-unauthenticated-enum-and-access/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "a999cb786fcc",
             "title": "GCP - Unauthenticated Enum & Access",
@@ -22831,21 +23096,51 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/kubernetes-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "9c2035226fce",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Permissions for a Pentest",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-permissions-for-a-pentest.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "9c2035226fce",
             "title": "K8s - Permissions for a Pentest",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-permissions-for-a-pentest.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "1d180a9ddb63",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Permissions Categories",
+        "path": "pentesting-cloud/kubernetes-security/permission-risk-categorizations.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "1d180a9ddb63",
             "title": "K8s - Permissions Categories",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/kubernetes-security/permission-risk-categorizations.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "f94bb71a00b4",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Basics",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-basic-information/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "f94bb71a00b4",
             "title": "K8s - Basics",
@@ -22915,7 +23210,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-basic-information/opa-gatekeeper.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "9f7a822cf7d1",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Unauthenticated Access",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-unauthenticated-access/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "9f7a822cf7d1",
             "title": "K8s - Unauthenticated Access",
@@ -22929,7 +23234,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-unauthenticated-access/kubelet-authentication-and-authorization.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "ef1d4fb774ef",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Enumeration",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-enumeration.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "ef1d4fb774ef",
             "title": "K8s - Enumeration",
@@ -22992,7 +23307,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-enumeration/cluster-and-node-objects.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "70329a46fdf0",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Privilege Escalation",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "70329a46fdf0",
             "title": "K8s - Privilege Escalation",
@@ -23111,7 +23436,17 @@
             "description": "The raw API examples show how to submit objects with an existing grant. See API object operations for the request examples and the linked privilege escalation paths.",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-privilege-escalation/api-object-operations.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "0574efbd58d4",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Persistence",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-persistence/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "0574efbd58d4",
             "title": "K8s - Persistence",
@@ -23146,7 +23481,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-persistence/controllers-and-admission.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "542e62e16f75",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Post Exploitation",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-post-exploitation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "542e62e16f75",
             "title": "K8s - Post Exploitation",
@@ -23258,7 +23603,17 @@
             "description": "<a id=\"kubernetes-pivoting-to-clouds\"></a>",
             "path": "pentesting-cloud/kubernetes-security/kubernetes-post-exploitation/kubernetes-pivoting-to-clouds.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "8a09c5e33b6f",
+        "folder": "pentesting-cloud",
+        "title": "K8s - Hardening",
+        "path": "pentesting-cloud/kubernetes-security/kubernetes-hardening/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "8a09c5e33b6f",
             "title": "K8s - Hardening",
@@ -23303,28 +23658,68 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/openshift-pentesting/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "0a5e09afef88",
+        "folder": "pentesting-cloud",
+        "title": "OpenShift - Basic information",
+        "path": "pentesting-cloud/openshift-pentesting/openshift-basic-information.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "0a5e09afef88",
             "title": "OpenShift - Basic information",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/openshift-pentesting/openshift-basic-information.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "f031a23bb6b7",
+        "folder": "pentesting-cloud",
+        "title": "Openshift - SCC",
+        "path": "pentesting-cloud/openshift-pentesting/openshift-privilege-escalation/openshift-scc.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "f031a23bb6b7",
             "title": "Openshift - SCC",
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/openshift-pentesting/openshift-privilege-escalation/openshift-scc.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "e24e4e2347fd",
+        "folder": "pentesting-cloud",
+        "title": "OpenShift SCC overview (former URL)",
+        "path": "pentesting-cloud/openshift-pentesting/openshift-scc.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "e24e4e2347fd",
             "title": "OpenShift SCC overview (former URL)",
             "description": "In OpenShift, SCC stands for Security Context Constraints. SCCs are cluster-level policies used during admission to control the permissions available to pods and the conditions und...",
             "path": "pentesting-cloud/openshift-pentesting/openshift-scc.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "1d9f304f0580",
+        "folder": "pentesting-cloud",
+        "title": "OpenShift - Jenkins",
+        "path": "pentesting-cloud/openshift-pentesting/openshift-jenkins/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "1d9f304f0580",
             "title": "OpenShift - Jenkins",
@@ -23338,7 +23733,17 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/openshift-pentesting/openshift-jenkins/openshift-jenkins-build-overrides.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "a30641ca379d",
+        "folder": "pentesting-cloud",
+        "title": "OpenShift - Privilege Escalation",
+        "path": "pentesting-cloud/openshift-pentesting/openshift-privilege-escalation/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "a30641ca379d",
             "title": "OpenShift - Privilege Escalation",
@@ -23427,7 +23832,17 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/gitblit-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "f2b4094a5a1d",
+        "folder": "pentesting-ci-cd",
+        "title": "Ssh Auth Bypass",
+        "path": "pentesting-ci-cd/gitblit-security/gitblit-embedded-ssh-auth-bypass-cve-2024-28080.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "f2b4094a5a1d",
             "title": "Ssh Auth Bypass",
@@ -23451,7 +23866,17 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/github-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "f5a89271966a",
+        "folder": "pentesting-ci-cd",
+        "title": "Abusing Github Actions",
+        "path": "pentesting-ci-cd/github-security/abusing-github-actions/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "f5a89271966a",
             "title": "Abusing Github Actions",
@@ -23486,14 +23911,34 @@
             "description": "{{#include ../../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/github-security/abusing-github-actions/gh-actions-npm-supply-chain-abuse.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "a322eddc62e4",
+        "folder": "pentesting-ci-cd",
+        "title": "Accessible Deleted Data in Github",
+        "path": "pentesting-ci-cd/github-security/accessible-deleted-data-in-github.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "a322eddc62e4",
             "title": "Accessible Deleted Data in Github",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/github-security/accessible-deleted-data-in-github.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "7f7e9e11e017",
+        "folder": "pentesting-ci-cd",
+        "title": "Basic Github Information",
+        "path": "pentesting-ci-cd/github-security/basic-github-information.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "7f7e9e11e017",
             "title": "Basic Github Information",
@@ -23517,7 +23962,17 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/gitea-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "78327bac88d1",
+        "folder": "pentesting-ci-cd",
+        "title": "Basic Gitea Information",
+        "path": "pentesting-ci-cd/gitea-security/basic-gitea-information.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "78327bac88d1",
             "title": "Basic Gitea Information",
@@ -23558,21 +24013,51 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/concourse-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "aaefcedd57c4",
+        "folder": "pentesting-ci-cd",
+        "title": "Concourse Architecture",
+        "path": "pentesting-ci-cd/concourse-security/concourse-architecture.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "aaefcedd57c4",
             "title": "Concourse Architecture",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/concourse-security/concourse-architecture.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "e4bcce03fd4f",
+        "folder": "pentesting-ci-cd",
+        "title": "Concourse Lab Creation",
+        "path": "pentesting-ci-cd/concourse-security/concourse-lab-creation.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "e4bcce03fd4f",
             "title": "Concourse Lab Creation",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/concourse-security/concourse-lab-creation.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "6573a9c9af42",
+        "folder": "pentesting-ci-cd",
+        "title": "Concourse Enumeration & Attacks",
+        "path": "pentesting-ci-cd/concourse-security/concourse-enumeration-and-attacks.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "6573a9c9af42",
             "title": "Concourse Enumeration & Attacks",
@@ -23613,7 +24098,17 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/travisci-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "3fb4ef73205d",
+        "folder": "pentesting-ci-cd",
+        "title": "Basic TravisCI Information",
+        "path": "pentesting-ci-cd/travisci-security/basic-travisci-information.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "3fb4ef73205d",
             "title": "Basic TravisCI Information",
@@ -23654,42 +24149,102 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/jenkins-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "1dd418d1449f",
+        "folder": "pentesting-ci-cd",
+        "title": "Basic Jenkins Information",
+        "path": "pentesting-ci-cd/jenkins-security/basic-jenkins-information.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "1dd418d1449f",
             "title": "Basic Jenkins Information",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/jenkins-security/basic-jenkins-information.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "4da04263c3e3",
+        "folder": "pentesting-ci-cd",
+        "title": "Jenkins RCE with Groovy Script",
+        "path": "pentesting-ci-cd/jenkins-security/jenkins-rce-with-groovy-script.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "4da04263c3e3",
             "title": "Jenkins RCE with Groovy Script",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/jenkins-security/jenkins-rce-with-groovy-script.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "2c940dc37f97",
+        "folder": "pentesting-ci-cd",
+        "title": "Jenkins RCE Creating/Modifying Project",
+        "path": "pentesting-ci-cd/jenkins-security/jenkins-rce-creating-modifying-project.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "2c940dc37f97",
             "title": "Jenkins RCE Creating/Modifying Project",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/jenkins-security/jenkins-rce-creating-modifying-project.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "717ce84a1618",
+        "folder": "pentesting-ci-cd",
+        "title": "Jenkins RCE Creating/Modifying Pipeline",
+        "path": "pentesting-ci-cd/jenkins-security/jenkins-rce-creating-modifying-pipeline.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "717ce84a1618",
             "title": "Jenkins RCE Creating/Modifying Pipeline",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/jenkins-security/jenkins-rce-creating-modifying-pipeline.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "864176f62dfc",
+        "folder": "pentesting-ci-cd",
+        "title": "Jenkins Arbitrary File Read to RCE via \"Remember Me\"",
+        "path": "pentesting-ci-cd/jenkins-security/jenkins-arbitrary-file-read-to-rce-via-remember-me.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "864176f62dfc",
             "title": "Jenkins Arbitrary File Read to RCE via \"Remember Me\"",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/jenkins-security/jenkins-arbitrary-file-read-to-rce-via-remember-me.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "260e68b60d54",
+        "folder": "pentesting-ci-cd",
+        "title": "Jenkins Dumping Secrets from Groovy",
+        "path": "pentesting-ci-cd/jenkins-security/jenkins-dumping-secrets-from-groovy.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "260e68b60d54",
             "title": "Jenkins Dumping Secrets from Groovy",
@@ -23713,14 +24268,34 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/apache-airflow-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "7fec2020223e",
+        "folder": "pentesting-ci-cd",
+        "title": "Airflow Configuration",
+        "path": "pentesting-ci-cd/apache-airflow-security/airflow-configuration.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "7fec2020223e",
             "title": "Airflow Configuration",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/apache-airflow-security/airflow-configuration.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "4bdb91b66d13",
+        "folder": "pentesting-ci-cd",
+        "title": "Airflow RBAC",
+        "path": "pentesting-ci-cd/apache-airflow-security/airflow-rbac.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "4bdb91b66d13",
             "title": "Airflow RBAC",
@@ -23795,21 +24370,51 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/cloudflare-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "2c90050e4a6c",
+        "folder": "pentesting-ci-cd",
+        "title": "Cloudflare Domains",
+        "path": "pentesting-ci-cd/cloudflare-security/cloudflare-domains.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "2c90050e4a6c",
             "title": "Cloudflare Domains",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/cloudflare-security/cloudflare-domains.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "60cec2f2f219",
+        "folder": "pentesting-ci-cd",
+        "title": "Cloudflare Workers Pass Through Proxy Ip Rotation",
+        "path": "pentesting-ci-cd/cloudflare-security/cloudflare-workers-pass-through-proxy-ip-rotation.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "60cec2f2f219",
             "title": "Cloudflare Workers Pass Through Proxy Ip Rotation",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/cloudflare-security/cloudflare-workers-pass-through-proxy-ip-rotation.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "742d26044539",
+        "folder": "pentesting-ci-cd",
+        "title": "Cloudflare Zero Trust Network",
+        "path": "pentesting-ci-cd/cloudflare-security/cloudflare-zero-trust-network.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "742d26044539",
             "title": "Cloudflare Zero Trust Network",
@@ -23833,7 +24438,17 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/okta-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "74ec62abd834",
+        "folder": "pentesting-ci-cd",
+        "title": "Okta Hardening",
+        "path": "pentesting-ci-cd/okta-security/okta-hardening.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "74ec62abd834",
             "title": "Okta Hardening",
@@ -23891,7 +24506,17 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-ci-cd/chef-automate-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "57eeda0d51d8",
+        "folder": "pentesting-ci-cd",
+        "title": "Chef Automate Enumeration And Attacks",
+        "path": "pentesting-ci-cd/chef-automate-security/chef-automate-enumeration-and-attacks.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "57eeda0d51d8",
             "title": "Chef Automate Enumeration And Attacks",
@@ -24027,7 +24652,17 @@
             "description": "{{#include ../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/pentesting-cloud-methodology.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "92dc692d7bf6",
+        "folder": "pentesting-cloud",
+        "title": "Luks2 Header Malleability Null Cipher Abuse",
+        "path": "pentesting-cloud/confidential-computing/luks2-header-malleability-null-cipher-abuse.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "92dc692d7bf6",
             "title": "Luks2 Header Malleability Null Cipher Abuse",
@@ -24068,42 +24703,147 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/workspace-security/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "8f62a4926418",
+        "folder": "pentesting-cloud",
+        "title": "GWS - Post Exploitation",
+        "path": "pentesting-cloud/workspace-security/gws-post-exploitation.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "8f62a4926418",
             "title": "GWS - Post Exploitation",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/workspace-security/gws-post-exploitation.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "7d9a6fe484c8",
+        "folder": "pentesting-cloud",
+        "title": "GWS - Admin Console Privesc",
+        "path": "pentesting-cloud/workspace-security/gws-admin-privesc.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "7d9a6fe484c8",
             "title": "GWS - Admin Console Privesc",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/workspace-security/gws-admin-privesc.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "2fb200b3b5be",
+        "folder": "pentesting-cloud",
+        "title": "GWS - Admin Org-Wide Data Exfiltration",
+        "path": "pentesting-cloud/workspace-security/gws-admin-data-exfil.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "2fb200b3b5be",
             "title": "GWS - Admin Org-Wide Data Exfiltration",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/workspace-security/gws-admin-data-exfil.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "292219965b15",
+        "folder": "pentesting-cloud",
+        "title": "GWS - Persistence",
+        "path": "pentesting-cloud/workspace-security/gws-persistence.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "292219965b15",
             "title": "GWS - Persistence",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/workspace-security/gws-persistence.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "6d472885bd46",
+        "folder": "pentesting-cloud",
+        "title": "GWS - Admin Console Persistence",
+        "path": "pentesting-cloud/workspace-security/gws-admin-persistence.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "6d472885bd46",
             "title": "GWS - Admin Console Persistence",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/workspace-security/gws-admin-persistence.md",
             "is_readme": false
+          }
+        ]
+      },
+      {
+        "id": "0b2c1a8a6840",
+        "folder": "pentesting-cloud",
+        "title": "GWS - Workspace Sync Attacks (GCPW, GCDS, GPS, Directory Sync with AD & EntraID)",
+        "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
+          {
+            "id": "0b2c1a8a6840",
+            "title": "GWS - Workspace Sync Attacks (GCPW, GCDS, GPS, Directory Sync with AD & EntraID)",
+            "description": "{{#include ../../../banners/hacktricks-training.md}}",
+            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/README.md",
+            "is_readme": true
           },
+          {
+            "id": "bc8cf9525854",
+            "title": "GWS - Admin Directory Sync",
+            "description": "{{#include ../../../banners/hacktricks-training.md}}",
+            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gws-admin-directory-sync.md",
+            "is_readme": false
+          },
+          {
+            "id": "9758242b30ac",
+            "title": "GCDS - Google Cloud Directory Sync",
+            "description": "{{#include ../../../banners/hacktricks-training.md}}",
+            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gcds-google-cloud-directory-sync.md",
+            "is_readme": false
+          },
+          {
+            "id": "fbefc64e92ab",
+            "title": "GCPW - Google Credential Provider for Windows",
+            "description": "{{#include ../../../banners/hacktricks-training.md}}",
+            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gcpw-google-credential-provider-for-windows.md",
+            "is_readme": false
+          },
+          {
+            "id": "18812fe6a01a",
+            "title": "GPS - Google Password Sync",
+            "description": "{{#include ../../../banners/hacktricks-training.md}}",
+            "path": "pentesting-cloud/workspace-security/gws-workspace-sync-attacks-gcpw-gcds-gps-directory-sync-with-ad-and-entraid/gps-google-password-sync.md",
+            "is_readme": false
+          }
+        ]
+      },
+      {
+        "id": "f32c73304a36",
+        "folder": "pentesting-cloud",
+        "title": "GWS - Google Platforms Phishing",
+        "path": "pentesting-cloud/workspace-security/gws-google-platforms-phishing/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "f32c73304a36",
             "title": "GWS - Google Platforms Phishing",
@@ -24134,21 +24874,51 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/digital-ocean-pentesting/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "701c66acd4e2",
+        "folder": "pentesting-cloud",
+        "title": "DO - Basic Information",
+        "path": "pentesting-cloud/digital-ocean-pentesting/do-basic-information.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "701c66acd4e2",
             "title": "DO - Basic Information",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/digital-ocean-pentesting/do-basic-information.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "90aa3a2ba746",
+        "folder": "pentesting-cloud",
+        "title": "DO - Permissions for a Pentest",
+        "path": "pentesting-cloud/digital-ocean-pentesting/do-permissions-for-a-pentest.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "90aa3a2ba746",
             "title": "DO - Permissions for a Pentest",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/digital-ocean-pentesting/do-permissions-for-a-pentest.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "14147a39dfd6",
+        "folder": "pentesting-cloud",
+        "title": "DO - Services",
+        "path": "pentesting-cloud/digital-ocean-pentesting/do-services/README.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "14147a39dfd6",
             "title": "DO - Services",
@@ -24235,21 +25005,51 @@
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/ibm-cloud-pentesting/README.md",
             "is_readme": true
-          },
+          }
+        ]
+      },
+      {
+        "id": "5ae89e7aca4f",
+        "folder": "pentesting-cloud",
+        "title": "IBM - Hyper Protect Crypto Services",
+        "path": "pentesting-cloud/ibm-cloud-pentesting/ibm-hyper-protect-crypto-services.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "5ae89e7aca4f",
             "title": "IBM - Hyper Protect Crypto Services",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/ibm-cloud-pentesting/ibm-hyper-protect-crypto-services.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "ba7141256fa5",
+        "folder": "pentesting-cloud",
+        "title": "IBM - Hyper Protect Virtual Server",
+        "path": "pentesting-cloud/ibm-cloud-pentesting/ibm-hyper-protect-virtual-server.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "ba7141256fa5",
             "title": "IBM - Hyper Protect Virtual Server",
             "description": "{{#include ../../banners/hacktricks-training.md}}",
             "path": "pentesting-cloud/ibm-cloud-pentesting/ibm-hyper-protect-virtual-server.md",
             "is_readme": false
-          },
+          }
+        ]
+      },
+      {
+        "id": "1b52846d4139",
+        "folder": "pentesting-cloud",
+        "title": "IBM - Basic Information",
+        "path": "pentesting-cloud/ibm-cloud-pentesting/ibm-basic-information.md",
+        "has_subcategories": false,
+        "subcategories": [],
+        "articles": [
           {
             "id": "1b52846d4139",
             "title": "IBM - Basic Information",
