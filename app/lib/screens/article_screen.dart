@@ -150,16 +150,14 @@ class _ArticleScreenState extends State<ArticleScreen> {
 
   Color _getPillarColor() {
     if (_article == null) return AppTheme.redTeam;
-    switch (_article!.pillarId) {
-      case 'red_team':
-        return AppTheme.redTeam;
-      case 'blue_team':
-        return AppTheme.blueTeam;
-      case 'sistem_yoneticisi':
-        return AppTheme.sysAdmin;
-      default:
-        return AppTheme.redTeam;
+    final pillar = _contentService.getPillarById(_article!.pillarId);
+    if (pillar != null && pillar.color.isNotEmpty) {
+      try {
+        final hex = pillar.color.replaceAll('#', '');
+        return Color(int.parse('FF$hex', radix: 16));
+      } catch (_) {}
     }
+    return AppTheme.redTeam;
   }
 
   void _scrollToSection(_ArticleSection section) {

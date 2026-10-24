@@ -19,14 +19,6 @@ class _SearchScreenState extends State<SearchScreen> {
   List<SearchIndexItem> _results = [];
   String _selectedFilter = 'all';
 
-  final List<Map<String, String>> _filters = [
-    {'id': 'all', 'label': 'Tümü'},
-    {'id': 'red_team', 'label': 'Red Team'},
-    {'id': 'blue_team', 'label': 'Blue Team'},
-    {'id': 'sistem_yoneticisi', 'label': 'SysAdmin'},
-    {'id': 'modul_11', 'label': 'Modül 11 (Araçlar)'},
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -34,6 +26,12 @@ class _SearchScreenState extends State<SearchScreen> {
       _controller.text = widget.initialQuery!;
       _performSearch(widget.initialQuery!);
     }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   void _performSearch(String query) {
@@ -46,24 +44,26 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Color _getPillarColor(String pillarId) {
-    switch (pillarId) {
-      case 'red_team':
-        return AppTheme.redTeam;
-      case 'blue_team':
-        return AppTheme.blueTeam;
-      case 'sistem_yoneticisi':
-        return AppTheme.sysAdmin;
-      default:
-        return AppTheme.redTeam;
+    final pillar = _contentService.getPillarById(pillarId);
+    if (pillar != null && pillar.color.isNotEmpty) {
+      try {
+        final hex = pillar.color.replaceAll('#', '');
+        return Color(int.parse('FF$hex', radix: 16));
+      } catch (_) {}
     }
+    return AppTheme.redTeam;
   }
 
   @override
   Widget build(BuildContext context) {
+    final isTr = _contentService.currentLanguage == 'tr';
+    final totalDocs = _contentService.searchIndex.length;
+    final pillars = _contentService.pillars;
+
     return Scaffold(
       backgroundColor: AppTheme.bgDark,
       appBar: AppBar(
-        title: const Text('Hızlı Çevrimdışı Arama'),
+        title: Text(isTr ? 'Hızlı Çevrimdışı Arama' : 'Fast Offline Search'),
       ),
       body: Column(
         children: [
@@ -72,11 +72,13 @@ class _SearchScreenState extends State<SearchScreen> {
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             child: TextField(
               controller: _controller,
-              autofocus: true,
+              autofocus: false,
               style: const TextStyle(color: AppTheme.textPrimary, fontSize: 15),
               onChanged: _performSearch,
               decoration: InputDecoration(
-                hintText: 'Araç, teknik, komut veya Event ID ara... (Örn: mimikatz, 4624, rbcd)',
+                hintText: isTr
+                    ? 'Araç, teknik, CVE veya komut ara... (Örn: nmap, sqli, privesc, cve-2024)'
+                    : 'Search tool, technique, CVE or command... (e.g. nmap, sqli, privesc)',
                 hintStyle: const TextStyle(color: AppTheme.textMuted, fontSize: 13),
                 prefixIcon: const Icon(Icons.search, color: AppTheme.textMuted),
                 suffixIcon: _controller.text.isNotEmpty
@@ -101,55 +103,86 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 focusedBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(12)),
-                  borderSide: BorderSide(color: AppTheme.redTeam),
+                  borderSide: BorderSide(color: AppTheme.redTeam, width: 1.5),
                 ),
               ),
             ),
           ),
-          // Filtre Butonları (Chips)
+
+          // Dinamik HackTricks Kategori Filtre Butonları (Chips)
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             child: Row(
-              children: _filters.map((f) {
-                final isSelected = _selectedFilter == f['id'];
-                return Padding(
+              children: [
+                // Tümü Çipi
+                Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: FilterChip(
-                    selected: isSelected,
-                    label: Text(f['label']!),
+                    selected: _selectedFilter == 'all',
+                    label: Text(isTr ? 'Tümü ($totalDocs)' : 'All ($totalDocs)'),
                     labelStyle: TextStyle(
                       fontSize: 12,
-                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      color: isSelected ? Colors.white : AppTheme.textSecondary,
+                      fontWeight: _selectedFilter == 'all' ? FontWeight.bold : FontWeight.normal,
+                      color: _selectedFilter == 'all' ? Colors.white : AppTheme.textSecondary,
                     ),
                     backgroundColor: AppTheme.bgCard,
-                    selectedColor: AppTheme.redTeam.withAlpha(80),
+                    selectedColor: AppTheme.redTeam.withAlpha(120),
                     side: BorderSide(
-                      color: isSelected ? AppTheme.redTeam : AppTheme.border,
+                      color: _selectedFilter == 'all' ? AppTheme.redTeam : AppTheme.border,
                     ),
                     onSelected: (val) {
-                      setState(() => _selectedFilter = f['id']!);
+                      setState(() => _selectedFilter = 'all');
                       _performSearch(_controller.text);
                     },
                   ),
-                );
-              }).toList(),
+                ),
+                // Gerçek HackTricks Sütunları
+                ...pillars.map((p) {
+                  final isSelected = _selectedFilter == p.id;
+                  final pColor = _getPillarColor(p.id);
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: FilterChip(
+                      selected: isSelected,
+                      label: Text(p.name),
+                      labelStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        color: isSelected ? Colors.white : AppTheme.textSecondary,
+                      ),
+                      backgroundColor: AppTheme.bgCard,
+                      selectedColor: pColor.withAlpha(140),
+                      side: BorderSide(
+                        color: isSelected ? pColor : AppTheme.border,
+                      ),
+                      onSelected: (val) {
+                        setState(() => _selectedFilter = isSelected ? 'all' : p.id);
+                        _performSearch(_controller.text);
+                      },
+                    ),
+                  );
+                }),
+              ],
             ),
           ),
+
           const SizedBox(height: 8),
+
           // Arama Sonuçları
           Expanded(
             child: _controller.text.isEmpty
                 ? Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.manage_search, size: 64, color: AppTheme.textMuted),
-                        SizedBox(height: 12),
+                      children: [
+                        const Icon(Icons.manage_search, size: 64, color: AppTheme.textMuted),
+                        const SizedBox(height: 12),
                         Text(
-                          '315 doküman ve 146 araç içinde anında arama yapın.',
-                          style: TextStyle(color: AppTheme.textSecondary, fontSize: 13.5),
+                          isTr
+                              ? '$totalDocs HackTricks dokümanı içinde anında çevrimdışı arama yapın.'
+                              : 'Search instantly across $totalDocs HackTricks documents offline.',
+                          style: const TextStyle(color: AppTheme.textSecondary, fontSize: 13.5),
                         ),
                       ],
                     ),
@@ -162,7 +195,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             const Icon(Icons.search_off, size: 48, color: AppTheme.textMuted),
                             const SizedBox(height: 12),
                             Text(
-                              '"${_controller.text}" ile eşleşen sonuç bulunamadı.',
+                              isTr
+                                  ? '"${_controller.text}" ile eşleşen doküman bulunamadı.'
+                                  : 'No documents found matching "${_controller.text}".',
                               style: const TextStyle(color: AppTheme.textSecondary, fontSize: 14),
                             ),
                           ],
@@ -208,11 +243,12 @@ class _SearchScreenState extends State<SearchScreen> {
                                           decoration: BoxDecoration(
                                             color: pillarColor.withAlpha(30),
                                             borderRadius: BorderRadius.circular(4),
+                                            border: Border.all(color: pillarColor.withAlpha(80)),
                                           ),
                                           child: Text(
                                             item.category.isNotEmpty
                                                 ? item.category
-                                                : item.pillarId.toUpperCase(),
+                                                : item.pillarId.replaceAll('_', ' ').toUpperCase(),
                                             style: TextStyle(
                                               fontSize: 11,
                                               fontWeight: FontWeight.bold,

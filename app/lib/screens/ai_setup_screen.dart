@@ -106,7 +106,7 @@ class _AiSetupScreenState extends State<AiSetupScreen> {
                       ),
                       SizedBox(height: 6),
                       Text(
-                        'Active Directory Vault tamamen çevrimdışıdır. Anahtarlarınız telefonunuzun güvenli donanım deposunda (Android Keystore) saklanır. Yalnızca siz AI butonuna bastığınızda seçili sağlayıcıya bağlanır.',
+                        'HackTricks Vault tamamen çevrimdışıdır. Anahtarlarınız telefonunuzun güvenli donanım deposunda (Android Keystore / Web LocalStorage) saklanır. Yalnızca siz AI butonuna bastığınızda seçili sağlayıcıya bağlanır.',
                         style: TextStyle(fontSize: 11.5, color: AppTheme.textSecondary, height: 1.4),
                       ),
                     ],

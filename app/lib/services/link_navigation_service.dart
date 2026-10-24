@@ -7,7 +7,7 @@ import '../screens/search_screen.dart';
 import '../theme/app_theme.dart';
 import 'content_service.dart';
 
-/// Active Directory Vault — Tüm Platformlar (Web & Mobil) İçin Evrensel Bağlantı Yönlendiricisi
+/// HackTricks Vault — Tüm Platformlar (Web & Mobil) İçin Evrensel Bağlantı Yönlendiricisi
 /// Markdown içindeki göreceli linkler, çapraz referanslar ve harici web linklerini
 /// %100 çevrimdışı öncelikli mimariyle ilgili ekranlara veya tarayıcıya yönlendirir.
 class LinkNavigationHelper {
@@ -143,21 +143,13 @@ class LinkNavigationHelper {
 
   /// Belirtilen yolun bir ana sütun kök dizinine işaret edip etmediğini kontrol eder.
   static String? _mapPathToPillarId(String path) {
-    final clean = path.replaceAll('\\', '/').trim().toLowerCase();
-    if (clean == '1-sistem_yoneticisi' ||
-        clean == '1-sistem_yoneticisi/' ||
-        clean == '1-sistem_yoneticisi/readme.md') {
-      return 'sistem_yoneticisi';
-    }
-    if (clean == '2-blue_team' ||
-        clean == '2-blue_team/' ||
-        clean == '2-blue_team/readme.md') {
-      return 'blue_team';
-    }
-    if (clean == '3-red_team' ||
-        clean == '3-red_team/' ||
-        clean == '3-red_team/readme.md') {
-      return 'red_team';
+    final clean = path.replaceAll('\\', '/').trim().toLowerCase().replaceAll('.md', '').replaceAll('/', '');
+    final pillars = ContentService().pillars;
+    for (final p in pillars) {
+      final pid = p.id.toLowerCase().replaceAll('_', '-');
+      if (clean == pid || clean.endsWith(pid) || pid.contains(clean)) {
+        return p.id;
+      }
     }
     return null;
   }

@@ -769,9 +769,9 @@ class AiService extends ChangeNotifier {
 
     final trimmedContext = trimContext(articleContext, maxChars: 7500);
 
-    final systemInstruction = '''Sen kıdemli bir Active Directory Siber Güvenlik Uzmanısın (Kırmızı ve Mavi Takım).
-Aşağıdaki Active Directory dokümanını temel alarak kullanıcıya net, operasyonel, teknik ve Türkçe cevap ver.
-Cevaplarında komut parametrelerini, Windows Event ID'lerini ve OPSEC risklerini net belirt.''';
+    final systemInstruction = '''Sen HackTricks Bilgi Tabanı için geliştirilmiş kıdemli bir Siber Güvenlik, Etik Hackerlık ve Sızma Testi Uzmanısın (Kırmızı ve Mavi Takım, OSCP/OSCE/OSEP seviyesi).
+Aşağıdaki HackTricks dokümanını temel alarak kullanıcıya net, operasyonel, teknik ve Türkçe cevap ver.
+Cevaplarında komut parametrelerini, araç bayraklarını, OPSEC risklerini ve savunma ipuçlarını net belirt.''';
 
     // Model sıralaması: Kullanıcının seçtiği model en başta, ardından diğer modeller
     final modelsToTry = <String>[];
@@ -824,14 +824,14 @@ Cevaplarında komut parametrelerini, Windows Event ID'lerini ve OPSEC risklerini
 
     final categoryLabel = category != null ? '${category.label} (${category.name})' : 'Karma Active Directory Konuları (Keşif, Kerberos, AD CS, ACL/GPO, Delegasyon, Yanal Hareket, Mavi Takım, Sistem)';
 
-    final systemInstruction = '''Sen kıdemli bir Active Directory Siber Güvenlik Uzmanısın ve CRTP / CRTE / OSCP sertifikasyonları için baş soru hazırlayıcısısın.
+    final systemInstruction = '''Sen kıdemli bir Siber Güvenlik ve Sızma Testi Uzmanısın ve OSCP / OSEP / CEH / CISSP sertifikasyonları için baş soru hazırlayıcısısın.
 Görevin, belirtilen kriterlere uygun 4 seçenekli sınav soruları üretmektir.
 Çıktın SADECE ve SADECE geçerli bir JSON array olmalıdır. Başka hiçbir açıklama, selamlama metni veya markdown yazma.
 
 JSON Şeması:
 [
   {
-    "category": "kerberos", // veya adcs, recon, aclGpo, credentialAccess, blueTeam vb.
+    "category": "web", // veya network, privesc, cloud, recon, auth vb.
     "question": "Soru metni... (Operasyonel ve senaryo odaklı, gerekiyorsa komut veya çıktı içeren)",
     "options": [
       "A şıkkı metni",
@@ -846,7 +846,7 @@ JSON Şeması:
 ]
 ''';
 
-    final prompt = '''Lütfen aşağıdaki kriterlere uygun $count adet 4 seçenekli Active Directory çoktan seçmeli sorusu üret:
+    final prompt = '''Lütfen aşağıdaki kriterlere uygun $count adet 4 seçenekli siber güvenlik / sızma testi çoktan seçmeli sorusu üret:
 - Kategori: $categoryLabel
 - Zorluk Seviyesi: ${difficulty.label}
 ${(customTopic != null && customTopic.trim().isNotEmpty) ? "- Özel Odak / Konu: ${customTopic.trim()}" : "- Odak: Belirtilen kategorinin en kritik operasyonel senaryoları, saldırı teknikleri, EDR/OPSEC sonuçları veya tespit mekanizmaları"}
@@ -1065,7 +1065,7 @@ Kurallar:
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $key',
         'HTTP-Referer': 'https://github.com/active-directory-vault',
-        'X-Title': 'Active Directory Vault',
+        'X-Title': 'HackTricks Vault',
       },
       body: json.encode({
         'model': model,
