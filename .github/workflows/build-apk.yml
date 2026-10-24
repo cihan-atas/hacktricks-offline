@@ -12,6 +12,8 @@ jobs:
   build:
     name: Build & Package APK
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
@@ -56,12 +58,12 @@ jobs:
           path: HackTricks-Offline-*.apk
           retention-days: 30
 
-      - name: Create Release (if manual or scheduled)
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
-        uses: softprops/action-gh-release@v1
+      - name: Create Release
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ github.run_number }}
-          name: HackTricks Offline Build (${{ github.run_number }})
+          tag_name: v1.0.${{ github.run_number }}
+          name: HackTricks Offline v1.0.${{ github.run_number }}
           body: |
             Güncel HackTricks Türkçe ve İngilizce dokümantasyonu ile derlenmiş APK.
             - Tarih: $(date +'%Y-%m-%d')
