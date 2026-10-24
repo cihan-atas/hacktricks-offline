@@ -68,13 +68,21 @@ class HomeScreen extends StatelessWidget {
             title: Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(6),
+                  padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
-                    color: AppTheme.redTeam.withAlpha(40),
+                    color: AppTheme.bgCard,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppTheme.redTeam, width: 1.5),
+                    border: Border.all(color: AppTheme.borderHighlight, width: 1.2),
                   ),
-                  child: const Icon(Icons.security, size: 20, color: AppTheme.redTeam),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(6),
+                    child: Image.asset(
+                      'assets/images/logo_small.png',
+                      width: 24,
+                      height: 24,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 10),
                 const Text(

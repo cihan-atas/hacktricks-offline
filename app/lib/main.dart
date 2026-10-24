@@ -92,13 +92,27 @@ class _MainNavigationShellState extends State<MainNavigationShell> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.redTeam.withAlpha(25),
+                  color: AppTheme.bgCard,
                   shape: BoxShape.circle,
-                  border: Border.all(color: AppTheme.redTeam, width: 2),
+                  border: Border.all(color: AppTheme.redTeam.withAlpha(150), width: 2),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppTheme.redTeam.withAlpha(50),
+                      blurRadius: 20,
+                      spreadRadius: 2,
+                    ),
+                  ],
                 ),
-                child: const Icon(Icons.security, size: 54, color: AppTheme.redTeam),
+                child: ClipOval(
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 72,
+                    height: 72,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               const SizedBox(height: 24),
               const Text(
