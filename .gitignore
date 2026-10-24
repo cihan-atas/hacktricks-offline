@@ -1,0 +1,25 @@
+# Derleme Araçları ve Kaynaklar
+bin/
+sources/
+*.apk
+*.log
+.crates.toml
+.crates2.json
+
+# Android & Gradle
+.gradle/
+build/
+android/.gradle/
+android/app/build/
+android/local.properties
+android/*.iml
+android/.idea/
+
+# Derlenen Dokümantasyon Çıktıları (Git'e atılmaz, CI/CD derler)
+android/app/src/main/assets/www/en/
+android/app/src/main/assets/www/tr/
+
+# Sistem ve Editör
+.DS_Store
+*.swp
+*~
