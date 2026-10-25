@@ -588,16 +588,47 @@ class _CommandGeneratorScreenState extends State<CommandGeneratorScreen> {
                 ),
               ),
 
-              // 3. Popüler Araç Aileleri Çipleri (Yatay Kaydırılabilir)
+              // 3. Popüler Araç Aileleri Çipleri ve Tam Araç Listesi Butonu (Yatay Kaydırılabilir)
               SizedBox(
                 height: 42,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   children: [
+                    // Tam Araç Listesi Modal Butonu (Kullanıcı Talebi: Diğer App'teki gibi zengin araç kataloğu)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: ActionChip(
+                        avatar: Icon(
+                          Icons.handyman,
+                          size: 15,
+                          color: _service.selectedTool != 'all' ? Colors.white : AppTheme.toolsAmber,
+                        ),
+                        label: Text(
+                          _service.selectedTool != 'all'
+                              ? '🛠️ ${_service.selectedTool}'
+                              : (isTr ? '🛠️ Araç Listesi (${_service.allTools.length})' : '🛠️ All Tools (${_service.allTools.length})'),
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: _service.selectedTool != 'all' ? Colors.white : AppTheme.textPrimary,
+                          ),
+                        ),
+                        backgroundColor: _service.selectedTool != 'all'
+                            ? AppTheme.redTeam
+                            : AppTheme.bgCard,
+                        side: BorderSide(
+                          color: _service.selectedTool != 'all' ? AppTheme.redTeam : AppTheme.border,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        onPressed: () => _showToolsModal(isTr),
+                      ),
+                    ),
                     _buildPopularToolChip(
                       key: 'all',
-                      label: isTr ? 'Tüm Araçlar' : 'All Tools',
+                      label: isTr ? 'Tümü' : 'All',
                       count: _service.commands.length,
                       icon: Icons.apps,
                       color: AppTheme.redTeam,
@@ -671,6 +702,227 @@ class _CommandGeneratorScreenState extends State<CommandGeneratorScreen> {
               ),
             ],
           ),
+        );
+      },
+    );
+  }
+
+  void _showToolsModal(bool isTr) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: AppTheme.bgCard,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
+      ),
+      builder: (modalCtx) {
+        String query = '';
+        return StatefulBuilder(
+          builder: (ctx, setModalState) {
+            final allTools = _service.allTools;
+            final filteredTools = query.isEmpty
+                ? allTools
+                : allTools.where((t) => t.toLowerCase().contains(query.toLowerCase())).toList();
+
+            return SafeArea(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.8,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Modal Başlığı
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                      child: Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: AppTheme.redTeam.withAlpha(25),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Icon(Icons.handyman, color: AppTheme.redTeam, size: 20),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  isTr ? 'Operasyonel Araç Listesi' : 'Security Tools Catalog',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Text(
+                                  isTr
+                                      ? '${allTools.length} Araç · ${_service.commands.length} Operasyonel Komut'
+                                      : '${allTools.length} Tools · ${_service.commands.length} Operational Commands',
+                                  style: const TextStyle(fontSize: 11.5, color: AppTheme.textMuted),
+                                ),
+                              ],
+                            ),
+                          ),
+                          if (_service.selectedTool != 'all')
+                            TextButton(
+                              onPressed: () {
+                                _service.setSelectedTool('all');
+                                Navigator.pop(modalCtx);
+                              },
+                              child: Text(
+                                isTr ? 'Temizle' : 'Clear',
+                                style: const TextStyle(color: AppTheme.redTeam, fontSize: 12),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+
+                    // Arama Kutusu
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      child: TextField(
+                        autofocus: false,
+                        decoration: InputDecoration(
+                          hintText: isTr ? 'Araç ara (örn: nmap, mimikatz, ffuf)...' : 'Filter tools...',
+                          hintStyle: const TextStyle(fontSize: 13, color: AppTheme.textMuted),
+                          prefixIcon: const Icon(Icons.search, size: 18, color: AppTheme.textMuted),
+                          filled: true,
+                          fillColor: AppTheme.bgDark,
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(color: AppTheme.border),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(color: AppTheme.border),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: const BorderSide(color: AppTheme.redTeam),
+                          ),
+                        ),
+                        onChanged: (val) {
+                          setModalState(() {
+                            query = val.trim();
+                          });
+                        },
+                      ),
+                    ),
+
+                    const Divider(height: 1),
+
+                    // Araç Listesi
+                    Flexible(
+                      child: ListView.builder(
+                        itemCount: filteredTools.length + 1,
+                        itemBuilder: (context, idx) {
+                          if (idx == 0) {
+                            final isAllSelected = _service.selectedTool == 'all';
+                            return ListTile(
+                              dense: true,
+                              leading: Container(
+                                width: 32,
+                                height: 32,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: isAllSelected ? AppTheme.redTeam.withAlpha(40) : AppTheme.bgDark,
+                                  borderRadius: BorderRadius.circular(8),
+                                  border: Border.all(
+                                    color: isAllSelected ? AppTheme.redTeam : AppTheme.border,
+                                  ),
+                                ),
+                                child: const Icon(Icons.apps, size: 16, color: Colors.white),
+                              ),
+                              title: Text(
+                                isTr ? 'Tüm Araçlar' : 'All Tools',
+                                style: TextStyle(
+                                  fontSize: 13.5,
+                                  fontWeight: isAllSelected ? FontWeight.bold : FontWeight.normal,
+                                  color: isAllSelected ? AppTheme.redTeam : Colors.white,
+                                ),
+                              ),
+                              trailing: Text(
+                                '${_service.commands.length}',
+                                style: const TextStyle(fontSize: 12, color: AppTheme.textMuted),
+                              ),
+                              onTap: () {
+                                _service.setSelectedTool('all');
+                                Navigator.pop(modalCtx);
+                              },
+                            );
+                          }
+
+                          final tool = filteredTools[idx - 1];
+                          final count = _service.countForTool(tool);
+                          final isSelected = _service.selectedTool.toLowerCase() == tool.toLowerCase();
+
+                          return ListTile(
+                            dense: true,
+                            leading: Container(
+                              width: 32,
+                              height: 32,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: isSelected ? AppTheme.redTeam.withAlpha(40) : AppTheme.bgDark,
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: isSelected ? AppTheme.redTeam : AppTheme.border,
+                                ),
+                              ),
+                              child: Text(
+                                tool.isNotEmpty ? tool[0].toUpperCase() : '?',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                  color: isSelected ? AppTheme.redTeam : AppTheme.toolsAmber,
+                                ),
+                              ),
+                            ),
+                            title: Text(
+                              tool,
+                              style: TextStyle(
+                                fontSize: 13.5,
+                                fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                                color: isSelected ? AppTheme.redTeam : Colors.white,
+                              ),
+                            ),
+                            trailing: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: isSelected ? AppTheme.redTeam.withAlpha(30) : AppTheme.bgDark,
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(
+                                  color: isSelected ? AppTheme.redTeam.withAlpha(80) : AppTheme.border,
+                                ),
+                              ),
+                              child: Text(
+                                '$count komut',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: isSelected ? AppTheme.redTeam : AppTheme.textMuted,
+                                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            onTap: () {
+                              _service.setSelectedTool(tool);
+                              Navigator.pop(modalCtx);
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         );
       },
     );
@@ -766,6 +1018,46 @@ class _CommandGeneratorScreenState extends State<CommandGeneratorScreen> {
                   style: TextButton.styleFrom(padding: EdgeInsets.zero, minimumSize: Size.zero),
                 ),
             ],
+          ),
+          const SizedBox(height: 8),
+
+          // Araç Seçici (Kullanıcı Talebi: Diğer App'teki gibi tam liste)
+          InkWell(
+            onTap: () => _showToolsModal(isTr),
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+              decoration: BoxDecoration(
+                color: AppTheme.bgDark,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: _service.selectedTool != 'all' ? AppTheme.redTeam : AppTheme.border,
+                ),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.handyman, size: 15, color: AppTheme.toolsAmber),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      _service.selectedTool != 'all'
+                          ? (isTr
+                              ? 'Seçili Araç: ${_service.selectedTool} (${_service.countForTool(_service.selectedTool)} komut)'
+                              : 'Selected Tool: ${_service.selectedTool} (${_service.countForTool(_service.selectedTool)} cmds)')
+                          : (isTr
+                              ? '🛠️ Araç Listesinden Seç (${_service.allTools.length} araç)'
+                              : '🛠️ Select from Tools Catalog (${_service.allTools.length} tools)'),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: _service.selectedTool != 'all' ? Colors.white : AppTheme.textSecondary,
+                        fontWeight: _service.selectedTool != 'all' ? FontWeight.bold : FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  const Icon(Icons.chevron_right, size: 16, color: AppTheme.textMuted),
+                ],
+              ),
+            ),
           ),
           const SizedBox(height: 8),
 

@@ -50,6 +50,19 @@ class CommandService extends ChangeNotifier {
   final Map<String, int> _platformCounts = {};
   final Map<String, int> _opsecCounts = {};
 
+  Map<String, int> get toolCounts => Map.unmodifiable(_toolCounts);
+
+  List<String> get allTools {
+    final list = _toolCounts.keys.toList();
+    list.sort((a, b) {
+      final countA = _toolCounts[a] ?? 0;
+      final countB = _toolCounts[b] ?? 0;
+      if (countA != countB) return countB.compareTo(countA);
+      return a.compareTo(b);
+    });
+    return list;
+  }
+
   // Önbelleklenmiş Filtre Çıktısı (Her frame'de 4500 öğeyi dönmemek için)
   List<CommandItem> _filteredCache = [];
   List<CommandItem> get filteredCommands => _filteredCache;

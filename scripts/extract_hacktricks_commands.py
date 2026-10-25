@@ -319,7 +319,16 @@ def extract_commands_from_file(filepath: Path, lang: str):
         except ValueError:
             rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / 'hacktricks-cloud-tr' / 'src'))
     else:
-        rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / f'hacktricks-{lang}'))
+        try:
+            rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / f'hacktricks-{lang}' / 'src'))
+        except ValueError:
+            rel_path = str(filepath.relative_to(BASE_DIR / 'sources' / f'hacktricks-{lang}'))
+            if rel_path.startswith('src/'):
+                rel_path = rel_path[4:]
+    
+    # Baştaki src/ kalıntısı varsa temizle (articles.json ile tam uyum)
+    if rel_path.startswith('src/'):
+        rel_path = rel_path[4:]
     
     # Dosya başlığı bul
     title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
@@ -410,7 +419,9 @@ def main():
     all_commands = {}
     
     # 1. EN Dokümanları
-    en_dir = BASE_DIR / 'sources' / 'hacktricks-en'
+    en_dir = BASE_DIR / 'sources' / 'hacktricks-en' / 'src'
+    if not en_dir.exists():
+        en_dir = BASE_DIR / 'sources' / 'hacktricks-en'
     if en_dir.exists():
         print(f"[+] 'EN' dokümanları taranıyor ({en_dir})...")
         for p in en_dir.rglob('*.md'):
@@ -440,7 +451,9 @@ def main():
                     all_commands[key] = cmd
 
     # 3. TR Dokümanları
-    tr_dir = BASE_DIR / 'sources' / 'hacktricks-tr'
+    tr_dir = BASE_DIR / 'sources' / 'hacktricks-tr' / 'src'
+    if not tr_dir.exists():
+        tr_dir = BASE_DIR / 'sources' / 'hacktricks-tr'
     if tr_dir.exists():
         print(f"[+] 'TR' dokümanları taranıyor ({tr_dir})...")
         for p in tr_dir.rglob('*.md'):

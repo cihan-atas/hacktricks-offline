@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/content_service.dart';
 import '../services/app_state.dart';
+import '../services/command_service.dart';
 import '../theme/app_theme.dart';
 import 'article_screen.dart';
 import 'pillar_screen.dart';
@@ -11,6 +12,7 @@ import 'command_generator_screen.dart';
 class HomeScreen extends StatelessWidget {
   final ContentService contentService = ContentService();
   final AppState appState = AppState();
+  final CommandService commandService = CommandService();
 
   HomeScreen({super.key});
 
@@ -417,9 +419,24 @@ class HomeScreen extends StatelessWidget {
                                     color: const Color(0xFF10b981).withAlpha(40),
                                     borderRadius: BorderRadius.circular(4),
                                   ),
-                                  child: const Text(
-                                    '590+ Canlı',
-                                    style: TextStyle(color: Color(0xFF10b981), fontSize: 10, fontWeight: FontWeight.bold),
+                                  child: ListenableBuilder(
+                                    listenable: commandService,
+                                    builder: (context, _) {
+                                      final count = commandService.commands.isNotEmpty
+                                          ? commandService.commands.length
+                                          : 17100;
+                                      final countStr = count >= 1000
+                                          ? '${(count / 1000).toStringAsFixed(1)}K+'
+                                          : '$count+';
+                                      return Text(
+                                        '$countStr Canlı',
+                                        style: const TextStyle(
+                                          color: Color(0xFF10b981),
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ],

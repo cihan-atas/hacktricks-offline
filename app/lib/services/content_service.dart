@@ -94,17 +94,26 @@ class ContentService extends ChangeNotifier {
         return detail;
       }
 
-      // Yol veya dosya adı ile arama
+      // Yol veya dosya adı ile esnek arama
       final normalizedId = id.replaceAll('\\', '/').toLowerCase();
+      final cleanId = normalizedId.startsWith('src/') ? normalizedId.substring(4) : normalizedId;
+      final cleanIdNoExt = cleanId.endsWith('.md') ? cleanId.substring(0, cleanId.length - 3) : cleanId;
+      final targetFilename = cleanId.split('/').last;
+
       for (final entry in _rawArticlesMap!.values) {
         if (entry is Map<String, dynamic>) {
           final path = (entry['path'] as String? ?? '').replaceAll('\\', '/').toLowerCase();
           final filename = (entry['filename'] as String? ?? '').toLowerCase();
           final entryId = (entry['id'] as String? ?? '').toLowerCase();
 
-          if (path == normalizedId ||
-              path.endsWith(normalizedId) ||
-              filename == normalizedId ||
+          if (path == cleanId ||
+              path == normalizedId ||
+              path.endsWith(cleanId) ||
+              cleanId.endsWith(path) ||
+              path.contains(cleanIdNoExt) ||
+              filename == targetFilename ||
+              filename == cleanId ||
+              entryId == cleanId ||
               entryId == normalizedId) {
             final detail = ArticleDetail.fromJson(entry);
             _articleCache[id] = detail;

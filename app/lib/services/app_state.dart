@@ -14,6 +14,8 @@ class AppState extends ChangeNotifier {
   String? _lastReadTitle;
   String? _lastReadCategory;
   final Map<String, int> _cardBoxes = {}; // cardId -> box (1..5)
+  final Map<String, Set<int>> _articleReadSections = {}; // articleId -> set of section indices
+  final Map<String, int> _articleLastSection = {}; // articleId -> last section index
   bool _isInitialized = false;
 
   Set<String> get readIds => _readIds;
@@ -49,7 +51,78 @@ class AppState extends ChangeNotifier {
       _cardBoxes[cardId] = _prefs?.getInt(k) ?? 1;
     }
 
+    // Bölüm bazlı okuma kayıtları (section_read_{articleId})
+    final secKeys = _prefs?.getKeys().where((k) => k.startsWith('sec_read_')) ?? [];
+    for (final k in secKeys) {
+      final artId = k.replaceFirst('sec_read_', '');
+      final list = _prefs?.getStringList(k) ?? [];
+      _articleReadSections[artId] = list.map((e) => int.tryParse(e) ?? 0).toSet();
+    }
+
+    // Bölüm bazlı son kalınan yer kayıtları (sec_last_{articleId})
+    final lastSecKeys = _prefs?.getKeys().where((k) => k.startsWith('sec_last_')) ?? [];
+    for (final k in lastSecKeys) {
+      final artId = k.replaceFirst('sec_last_', '');
+      _articleLastSection[artId] = _prefs?.getInt(k) ?? 0;
+    }
+
     _isInitialized = true;
+    notifyListeners();
+  }
+
+  // Bölüm bazlı okuma durumu yönetimi
+  bool isSectionRead(String articleId, int sectionIndex) {
+    return _articleReadSections[articleId]?.contains(sectionIndex) ?? false;
+  }
+
+  Set<int> getReadSections(String articleId) {
+    return _articleReadSections[articleId] ?? {};
+  }
+
+  int getReadSectionsCount(String articleId) {
+    return _articleReadSections[articleId]?.length ?? 0;
+  }
+
+  Future<void> toggleSectionRead(String articleId, int sectionIndex) async {
+    final set = _articleReadSections.putIfAbsent(articleId, () => <int>{});
+    if (set.contains(sectionIndex)) {
+      set.remove(sectionIndex);
+    } else {
+      set.add(sectionIndex);
+      // Okundu işaretlendiğinde burası otomatik olarak son kalınan yer de olur
+      _articleLastSection[articleId] = sectionIndex;
+      await _prefs?.setInt('sec_last_$articleId', sectionIndex);
+    }
+    await _prefs?.setStringList(
+      'sec_read_$articleId',
+      set.map((e) => e.toString()).toList(),
+    );
+    notifyListeners();
+  }
+
+  Future<void> setSectionRead(String articleId, int sectionIndex, bool isRead) async {
+    final set = _articleReadSections.putIfAbsent(articleId, () => <int>{});
+    if (isRead) {
+      set.add(sectionIndex);
+      _articleLastSection[articleId] = sectionIndex;
+      await _prefs?.setInt('sec_last_$articleId', sectionIndex);
+    } else {
+      set.remove(sectionIndex);
+    }
+    await _prefs?.setStringList(
+      'sec_read_$articleId',
+      set.map((e) => e.toString()).toList(),
+    );
+    notifyListeners();
+  }
+
+  int? getLastReadSection(String articleId) {
+    return _articleLastSection[articleId];
+  }
+
+  Future<void> setLastReadSection(String articleId, int sectionIndex) async {
+    _articleLastSection[articleId] = sectionIndex;
+    await _prefs?.setInt('sec_last_$articleId', sectionIndex);
     notifyListeners();
   }
 
@@ -111,11 +184,20 @@ class AppState extends ChangeNotifier {
     _lastReadId = null;
     _lastReadTitle = null;
     _lastReadCategory = null;
+    _articleReadSections.clear();
+    _articleLastSection.clear();
     await _prefs?.remove('ad_read_ids');
     await _prefs?.remove('saved_bookmarks');
     await _prefs?.remove('ad_last_read_id');
     await _prefs?.remove('ad_last_read_title');
     await _prefs?.remove('ad_last_read_cat');
+
+    final allKeys = _prefs?.getKeys() ?? {};
+    for (final k in allKeys) {
+      if (k.startsWith('sec_read_') || k.startsWith('sec_last_')) {
+        await _prefs?.remove(k);
+      }
+    }
     notifyListeners();
   }
 }

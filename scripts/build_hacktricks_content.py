@@ -84,17 +84,94 @@ CLOUD_PILLARS_META = {
 }
 
 def clean_markdown(content: str) -> str:
-    """GitBook / mdBook özel etiketlerini temizle ve Flutter Markdown için optimize et."""
-    # GitHub Secret Scanning koruması: Örnek dummy bulut token'larını güvenli yer tutuculara çevir
+    """GitBook / mdBook özel etiketlerini, bannerları ve gereksiz HTML etiketlerini temizle."""
+    # 1. GitHub Secret Scanning koruması: Örnek dummy bulut token'larını güvenli yer tutuculara çevir
     content = re.sub(r'1//0[a-zA-Z0-9_\-]+', '{{google_refresh_token}}', content)
     content = re.sub(r'ya29\.[a-zA-Z0-9_\-]+', '{{google_oauth_token}}', content)
     content = re.sub(r'AIza[0-9A-Za-z-_]{35}', '{{google_api_key}}', content)
     content = re.sub(r'AKIA[0-9A-Z]{16}', '{{aws_access_key}}', content)
 
+    # 2. mdBook / GitBook Include Banner ve Şablonlarını Temizle
+    # (Ör: {{#include ../banners/hacktricks-training.md}} vb.)
+    content = re.sub(r'\{\{#include\s+[^}]+\}\}', '', content)
+    content = re.sub(r'\{\{#[a-zA-Z0-9_\-]+\}\}', '', content)
+
+    # mdBook tabs -> Markdown başlıklarına dönüştür
+    content = re.sub(r'\{\{#tab\s+name="([^"]+)"\}\}', r'\n### \1\n', content)
+    content = re.sub(r'\{\{#endtab\}\}', '', content)
+    content = re.sub(r'\{\{#tabs\}\}', '', content)
+    content = re.sub(r'\{\{#endtabs\}\}', '', content)
+    content = re.sub(r'\{\{#(?:ref|endref|file|endfile)[^\}]*\}\}', '', content)
+
+    # GitBook ipucu etiketleri
     content = re.sub(r'\{%\s*hint\s+style="(\w+)"\s*%\}(.*?)\{%\s*endhint\s*%\}', r'> **[\1]** \2', content, flags=re.DOTALL)
     content = re.sub(r'\{%\s*hint[^\%]*%\}(.*?)\{%\s*endhint\s*%\}', r'> \1', content, flags=re.DOTALL)
     content = re.sub(r'\{%\s*(?:hint|endhint)[^\%]*%\}', '', content)
     content = re.sub(r'<!--\s*(?:tabs|endtabs)\s*-->', '', content)
+
+    # 3. Sponsor, Eğitim ve Reklam Banner Resimlerini ve Linklerini Temizle
+    content = re.sub(
+        r'!\[.*?\]\([^\)]*(?:banner|sponsor|discount|ads|badge|cyberhelmets|venacus|arte-badge|grte-badge|azrte-badge|logo-naxus|CH_logo)[^\)]*\)',
+        '',
+        content,
+        flags=re.IGNORECASE
+    )
+
+    # Tıklanabilir banner linkleri
+    content = re.sub(
+        r'\[\s*!\[.*?\]\(.*?\)\s*\]\([^\)]*(?:training|sponsor|discount|cyberhelmets|venacus)[^\)]*\)',
+        '',
+        content,
+        flags=re.IGNORECASE
+    )
+
+    # 4. HTML Script, Style ve Iframe'leri Temizle
+    content = re.sub(r'<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>', '', content, flags=re.DOTALL | re.IGNORECASE)
+    content = re.sub(r'<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>', '', content, flags=re.DOTALL | re.IGNORECASE)
+    content = re.sub(r'<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>', '', content, flags=re.DOTALL | re.IGNORECASE)
+
+    # 5. Gereksiz HTML Etiketlerini Temizle ve Markdown'a Uyarlayın
+    # Dipnot referansları (<sup>[[1]](#references)</sup> veya <sup>1</sup>)
+    content = re.sub(r'<sup\b[^>]*>.*?</sup>', '', content, flags=re.IGNORECASE)
+    content = re.sub(r'<sub\b[^>]*>.*?</sub>', '', content, flags=re.IGNORECASE)
+
+    # Details ve Summary
+    content = re.sub(r'<summary\b[^>]*>(.*?)</summary>', r'\n**\1**\n', content, flags=re.IGNORECASE)
+    content = re.sub(r'</?details\b[^>]*>', '', content, flags=re.IGNORECASE)
+
+    # Figure ve Figcaption
+    content = re.sub(r'<figcaption\b[^>]*>(.*?)</figcaption>', r'\n*\1*\n', content, flags=re.IGNORECASE)
+    content = re.sub(r'</?figure\b[^>]*>', '', content, flags=re.IGNORECASE)
+
+    # Basit Biçimlendirmeler
+    content = re.sub(r'<br\s*/?>', '\n', content, flags=re.IGNORECASE)
+    content = re.sub(r'<(?:strong|b)\b[^>]*>(.*?)</(?:strong|b)>', r'**\1**', content, flags=re.IGNORECASE)
+    content = re.sub(r'<(?:em|i)\b[^>]*>(.*?)</(?:em|i)>', r'*\1*', content, flags=re.IGNORECASE)
+    content = re.sub(r'<code\b[^>]*>(.*?)</code>', r'`\1`', content, flags=re.IGNORECASE)
+
+    # Div, Span, P etiketleri
+    content = re.sub(r'</?p\b[^>]*>', '\n\n', content, flags=re.IGNORECASE)
+    content = re.sub(r'</?(?:div|span)\b[^>]*>', '', content, flags=re.IGNORECASE)
+
+    # Basit HTML linklerini Markdown'a çevir: <a href="url">text</a> -> [text](url)
+    content = re.sub(r'<a\b[^>]*href="([^"]*)"[^>]*>(.*?)</a>', r'[\2](\1)', content, flags=re.IGNORECASE)
+
+    # 6. Satır Bazlı Banner / Eğitim Reklamı Temizliği (Hızlı ve Güvenli)
+    cleaned_lines = []
+    skip_block = False
+    for line in content.splitlines():
+        l_lower = line.lower()
+        if 'hacktricks training' in l_lower or 'hacktricks-training.com' in l_lower:
+            continue
+        if 'ch_logo_ads' in l_lower or 'cyberhelmets' in l_lower or 'venacus' in l_lower:
+            continue
+        if 'subscribe to hacktricks' in l_lower or 'support hacktricks' in l_lower:
+            continue
+        cleaned_lines.append(line)
+
+    content = '\n'.join(cleaned_lines)
+
+    # Ardışık boş satırları ve kenar boşluklarını toparla
     content = re.sub(r'\n{3,}', '\n\n', content)
     return content.strip()
 
@@ -105,12 +182,15 @@ def extract_description(content: str, fallback_title: str) -> str:
         line = line.strip()
         if not line:
             continue
-        if line.startswith('#') or line.startswith('>') or line.startswith('```') or line.startswith('-') or line.startswith('*'):
+        if line.startswith('#') or line.startswith('>') or line.startswith('```') or line.startswith('-') or line.startswith('*') or line.startswith('{{') or line.startswith('<'):
             continue
         if len(line) > 20:
             clean = re.sub(r'\[(.*?)\]\(.*?\)', r'\1', line)
             clean = re.sub(r'[*_`]', '', clean)
-            return clean[:180] + ('...' if len(clean) > 180 else '')
+            clean = re.sub(r'<[^>]+>', '', clean)
+            clean = clean.strip()
+            if len(clean) > 20:
+                return clean[:180] + ('...' if len(clean) > 180 else '')
     return fallback_title
 
 def get_cloud_pillar_id(link: str) -> str:
@@ -157,6 +237,10 @@ def parse_main_wiki(src_dir: Path, color_offset: int = 0):
             if pname.lower() == 'summary.md':
                 continue
             pid = re.sub(r'[^a-zA-Z0-9]+', '_', pname).strip('_').lower()
+            # Kullanıcı isteği: Cloud Security modülü 0 doküman içerdiği ve bulut zaten HackTricks Cloud'dan alındığı için atlanır
+            if 'cloud_security' in pid or 'cloud security' in pname.lower():
+                current_pillar = None
+                continue
             current_pillar = {
                 'id': pid,
                 'name': pname,
@@ -240,7 +324,8 @@ def parse_main_wiki(src_dir: Path, color_offset: int = 0):
                 'description': desc
             })
 
-    return pillars, articles_map, search_index
+    final_pillars = [p for p in pillars if len(p['modules']) > 0 and 'cloud_security' not in p['id']]
+    return final_pillars, articles_map, search_index
 
 def parse_cloud_wiki(src_dir: Path, lang: str):
     summary_path = src_dir / "SUMMARY.md"

@@ -85,13 +85,45 @@ class _ArticleScreenState extends State<ArticleScreen> {
           title: article.title,
           category: article.category,
         );
-        if (widget.targetSectionAnchor != null) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (mounted) {
-              _scrollToSectionByAnchor(widget.targetSectionAnchor!);
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (!mounted) return;
+          if (widget.targetSectionAnchor != null) {
+            _scrollToSectionByAnchor(widget.targetSectionAnchor!);
+          } else {
+            // Kullanıcı daha önce bu dokümanda bir bölümde kaldıysa otomatik devam et
+            final lastSecIdx = _appState.getLastReadSection(article.id);
+            if (lastSecIdx != null && lastSecIdx > 0) {
+              final targetSec = _sections.firstWhere(
+                (s) => s.index == lastSecIdx,
+                orElse: () => _sections.first,
+              );
+              if (targetSec.index > 0) {
+                _scrollToSection(targetSec);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Row(
+                      children: [
+                        const Icon(Icons.bookmark_added, color: AppTheme.toolsAmber, size: 18),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            'Kaldığınız yerden devam ediliyor: ${targetSec.title}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 12.5),
+                          ),
+                        ),
+                      ],
+                    ),
+                    duration: const Duration(seconds: 2),
+                    backgroundColor: AppTheme.bgCard,
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+              }
             }
-          });
-        }
+          }
+        });
       }
     }
   }
@@ -186,80 +218,194 @@ class _ArticleScreenState extends State<ArticleScreen> {
   void _showTableOfContents() {
     if (_article == null || _sections.isEmpty) return;
 
+    final artId = _article!.id;
+
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       backgroundColor: AppTheme.bgCard,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
       builder: (context) {
-        return SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: const [
-                    Icon(Icons.list_alt, color: AppTheme.blueTeam, size: 20),
-                    SizedBox(width: 8),
-                    Text(
-                      'İçindekiler / Bölümler',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.textPrimary,
+        return StatefulBuilder(
+          builder: (ctx, setModalState) {
+            final readCount = _appState.getReadSectionsCount(artId);
+            final totalCount = _sections.length;
+            final progress = totalCount > 0 ? (readCount / totalCount).clamp(0.0, 1.0) : 0.0;
+
+            return SafeArea(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.75,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Modal Başlığı ve İlerleme
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.list_alt, color: AppTheme.blueTeam, size: 22),
+                              const SizedBox(width: 8),
+                              const Expanded(
+                                child: Text(
+                                  'İçindekiler & Bölüm İlerlemesi',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppTheme.textPrimary,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                decoration: BoxDecoration(
+                                  color: AppTheme.sysAdmin.withAlpha(25),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(color: AppTheme.sysAdmin.withAlpha(80)),
+                                ),
+                                child: Text(
+                                  '$readCount / $totalCount Okundu',
+                                  style: const TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppTheme.sysAdmin,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: LinearProgressIndicator(
+                              value: progress,
+                              backgroundColor: AppTheme.border,
+                              valueColor: const AlwaysStoppedAnimation<Color>(AppTheme.sysAdmin),
+                              minHeight: 5,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Bölümleri tamamladıkça tikleyin. Bir sonraki açılışta son kaldığınız yere otomatik kaydırılır.',
+                            style: TextStyle(fontSize: 11, color: AppTheme.textMuted),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Divider(height: 1),
+                    Flexible(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _sections.length,
+                        itemBuilder: (context, index) {
+                          final sec = _sections[index];
+                          final isSecRead = _appState.isSectionRead(artId, sec.index);
+                          final isLastRead = _appState.getLastReadSection(artId) == sec.index;
+
+                          return ListTile(
+                            dense: true,
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+                            leading: Container(
+                              width: 28,
+                              height: 28,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: isSecRead
+                                    ? AppTheme.sysAdmin.withAlpha(30)
+                                    : (isLastRead ? AppTheme.toolsAmber.withAlpha(30) : AppTheme.blueTeam.withAlpha(25)),
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: isSecRead
+                                      ? AppTheme.sysAdmin
+                                      : (isLastRead ? AppTheme.toolsAmber : Colors.transparent),
+                                  width: 1,
+                                ),
+                              ),
+                              child: Text(
+                                sec.index == 0 ? '0' : '${sec.index}',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                  color: isSecRead
+                                      ? AppTheme.sysAdmin
+                                      : (isLastRead ? AppTheme.toolsAmber : AppTheme.blueTeam),
+                                ),
+                              ),
+                            ),
+                            title: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    sec.title,
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: isLastRead ? FontWeight.bold : FontWeight.w600,
+                                      color: isSecRead
+                                          ? AppTheme.textSecondary
+                                          : (isLastRead ? AppTheme.toolsAmber : AppTheme.textPrimary),
+                                      decoration: isSecRead ? TextDecoration.lineThrough : null,
+                                      decorationColor: AppTheme.textMuted,
+                                    ),
+                                  ),
+                                ),
+                                if (isLastRead) ...[
+                                  const SizedBox(width: 6),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1.5),
+                                    decoration: BoxDecoration(
+                                      color: AppTheme.toolsAmber.withAlpha(30),
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                    child: const Text(
+                                      'Son Kalınan',
+                                      style: TextStyle(
+                                        fontSize: 9.5,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppTheme.toolsAmber,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                            trailing: IconButton(
+                              icon: Icon(
+                                isSecRead ? Icons.check_circle : Icons.radio_button_unchecked,
+                                color: isSecRead ? AppTheme.sysAdmin : AppTheme.textMuted,
+                                size: 22,
+                              ),
+                              tooltip: isSecRead ? 'Okunmadı olarak işaretle' : 'Okundu olarak işaretle',
+                              onPressed: () async {
+                                await _appState.toggleSectionRead(artId, sec.index);
+                                setModalState(() {});
+                                if (mounted) setState(() {});
+                              },
+                            ),
+                            onTap: () async {
+                              await _appState.setLastReadSection(artId, sec.index);
+                              if (!ctx.mounted) return;
+                              Navigator.pop(ctx);
+                              if (mounted) {
+                                _scrollToSection(sec);
+                                setState(() {});
+                              }
+                            },
+                          );
+                        },
                       ),
                     ),
                   ],
                 ),
               ),
-              const Divider(height: 1),
-              Flexible(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: _sections.length,
-                  itemBuilder: (context, index) {
-                    final sec = _sections[index];
-                    return ListTile(
-                      dense: true,
-                      leading: Container(
-                        width: 26,
-                        height: 26,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: AppTheme.blueTeam.withAlpha(25),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Text(
-                          sec.index == 0 ? '0' : '${sec.index}',
-                          style: const TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.bold,
-                            color: AppTheme.blueTeam,
-                          ),
-                        ),
-                      ),
-                      title: Text(
-                        sec.title,
-                        style: const TextStyle(
-                          fontSize: 13.5,
-                          fontWeight: FontWeight.w600,
-                          color: AppTheme.textPrimary,
-                        ),
-                      ),
-                      trailing: const Icon(Icons.arrow_forward_ios, size: 12, color: AppTheme.textMuted),
-                      onTap: () {
-                        Navigator.pop(context);
-                        _scrollToSection(sec);
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+            );
+          },
         );
       },
     );
@@ -694,6 +840,27 @@ class _ArticleScreenState extends State<ArticleScreen> {
                         moduleTitle: _article?.category ?? '',
                         articleContent: section.body,
                         articleTitle: '$fullTitle · ${section.title}',
+                      );
+                    },
+                  ),
+                  const SizedBox(width: 4),
+                  // Bölüm Okundu Tik Butonu
+                  Builder(
+                    builder: (context) {
+                      final isSecRead = _appState.isSectionRead(widget.articleId, section.index);
+                      return IconButton(
+                        icon: Icon(
+                          isSecRead ? Icons.check_circle : Icons.check_circle_outline,
+                          size: 18,
+                          color: isSecRead ? AppTheme.sysAdmin : AppTheme.textMuted,
+                        ),
+                        tooltip: isSecRead ? 'Okundu işaretini kaldır' : 'Bölümü Tamamla (Okundu İşaretle)',
+                        padding: const EdgeInsets.all(4),
+                        constraints: const BoxConstraints(),
+                        onPressed: () async {
+                          await _appState.toggleSectionRead(widget.articleId, section.index);
+                          if (mounted) setState(() {});
+                        },
                       );
                     },
                   ),
