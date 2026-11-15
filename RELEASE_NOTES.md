@@ -1,7 +1,39 @@
 ## 🛡️ HackTricks Vault — Otomatik Üretim Sürümü
 
-> **Derleme Tarihi:** `2026-11-15 16:50 UTC`  
+> **Derleme Tarihi:** `2026-11-15 16:53 UTC`  
 > **Durum:** %100 Çevrimdışı (Offline), Banner & Reklamsız, Canlı Parametreli Cephanelik
+
+---
+
+### 📋 Bu Sürümde Neler Değişti? (Dosya & Komut Detayları)
+#### 📝 Etkilenen / Güncellenen Dosyalar:
+- ➕ `RELEASE_NOTES.md`
+
+#### ⚡ Öne Çıkan / Aktif Pentest Komutları:
+- **`DOCKER`** — *DOCKER - İlginç Gruplar - Linux Privesc*
+  ```bash
+  Grup üyeliği `/etc/group`, `/etc/gshadow` ve mevcut process token arasında eşleşmeyebilir. K...
+  ```
+- **`CURL`** — *CURL - Tarayıcı Eklentisi Pentesting Metodolojisi*
+  ```bash
+  Bir Chrome extension'ın kaynak kodu, komut satırı kullanılarak ZIP dosyası olarak indirilebi...
+  ```
+- **`NC`** — *NC - SSRF (Server Side Request Forgery)*
+  ```bash
+  Java certpath debug çıktısı `CertStore URI:{{target_url}} gösterir ve `nc`, `-Dhttp.agent` i...
+  ```
+- **`WHOAMI`** — *WHOAMI - SSRF (Server Side Request Forgery)*
+  ```bash
+  Şu tür bir payload denemeye değer olabilir: `` url={{target_url}} ``
+  ```
+- **`AWS`** — *AWS - SSRF (Server Side Request Forgery)*
+  ```bash
+  Bu [**blog yazısına**]({{target_url}} göre, hedef URL 200 status code yanıtı verse bile (AWS...
+  ```
+- **`CURL`** — *CURL - SSRF (Server Side Request Forgery)*
+  ```bash
+  **TCPDF** gibi kütüphaneler (ve **spipu/html2pdf** gibi wrapper’lar), PDF oluştururken saldı...
+  ```
 
 ---
 
@@ -25,7 +57,7 @@
 
 ---
 
-### 🔄 Upstream Kaynak Senkronizasyonu (En Son Gelen Güncellemeler)
+### 🔄 Upstream Kaynak Senkronizasyonu (En Son Gelen Commit'ler)
 **HackTricks Main (EN):**
 - `2e03522 - Merge pull request #3189 from HackTricks-wiki/research_update_src_pentesting-web_login-bypass_sql-login-bypass_20261024_154510`
 

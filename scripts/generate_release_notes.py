@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-HackTricks Vault - Dinamik Sürüm Notu ve Değişiklik Günlüğü (Changelog) Oluşturucu
+HackTricks Vault - Akıllı Değişiklik Algılayıcı ve Sürüm Notu Oluşturucu (v2)
 Bu betik:
-- Toplam doküman sayılarını (TR ve EN)
-- Kategori (Pillar) ve modül dağılımını
-- Çıkarılan canlı pentest komutlarının sayısını ve kategorik dökümünü
-- En çok komuta sahip güvenlik araçlarını
-- Upstream HackTricks ve HackTricks Cloud repolarından senkronize edilen son güncellemeleri
-okur ve GitHub Release için zengin, profesyonel bir Markdown sürüm notu (RELEASE_NOTES.md) üretir.
+- Önceki derleme/commit ile şimdiki derleme arasındaki FARK ları (diff) hesaplar:
+  • Hangi markdown dosyaları/dokümanlar yeni eklendi?
+  • Hangi dokümanlar güncellendi?
+  • Hangi yeni pentest komutları cephaneliğe eklendi? (araç, başlık ve şablon)
+- Upstream HackTricks repolarından gelen son commit başlıklarını çeker.
+- Tüm bu detayları dosya dosya ve komut komut RELEASE_NOTES.md dosyasına döker.
 """
 
 import os
@@ -21,18 +21,51 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ASSETS_DIR = BASE_DIR / "app" / "assets" / "data"
 OUTPUT_FILE = BASE_DIR / "RELEASE_NOTES.md"
 
-def get_git_latest_commit(repo_path: Path) -> str:
-    """Git reposundan son commit özetini çeker."""
-    if not (repo_path / ".git").exists():
-        return "N/A"
+def get_git_diff_summary():
+    """Git geçmişinden veya kaynak repolardan değişen/eklenen dosyaları tespit eder."""
+    added_files = []
+    modified_files = []
+
+    # 1. Ana repodaki son commit ile önceki commit arasındaki fark
     try:
         res = subprocess.run(
-            ["git", "-C", str(repo_path), "log", "-n", "1", "--pretty=format:%h - %s (%cd)", "--date=short"],
-            capture_output=True, text=True, check=True
+            ["git", "diff", "--name-status", "HEAD~1", "HEAD"],
+            cwd=str(BASE_DIR), capture_output=True, text=True, check=True
         )
-        return res.stdout.strip()
+        for line in res.stdout.splitlines():
+            parts = line.strip().split(maxsplit=1)
+            if len(parts) == 2:
+                status, path = parts[0], parts[1]
+                if status == 'A':
+                    added_files.append(path)
+                elif status == 'M':
+                    modified_files.append(path)
     except Exception:
-        return "N/A"
+        pass
+
+    # 2. sources/ altındaki repolardan son commit ile değişen dosyalar
+    sources_dir = BASE_DIR / "sources"
+    for sdir in sources_dir.glob("hacktricks*"):
+        if (sdir / ".git").exists():
+            try:
+                res = subprocess.run(
+                    ["git", "-C", str(sdir), "diff", "--name-status", "HEAD~1", "HEAD"],
+                    capture_output=True, text=True, check=True
+                )
+                for line in res.stdout.splitlines():
+                    parts = line.strip().split(maxsplit=1)
+                    if len(parts) == 2:
+                        status, path = parts[0], parts[1]
+                        if path.endswith(".md"):
+                            rel = f"{sdir.name}/{path}"
+                            if status == 'A' and rel not in added_files:
+                                added_files.append(rel)
+                            elif status == 'M' and rel not in modified_files:
+                                modified_files.append(rel)
+            except Exception:
+                pass
+
+    return added_files, modified_files
 
 def get_git_recent_commits(repo_path: Path, count: int = 3) -> list:
     """Son commitlerin listesini çeker."""
@@ -51,9 +84,9 @@ def get_git_recent_commits(repo_path: Path, count: int = 3) -> list:
 def main():
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
 
-    # 1. Doküman Sayılarını Oku
-    tr_articles_count = 0
-    en_articles_count = 0
+    # 1. Doküman ve Hiyerarşi Sayılarını Oku
+    tr_articles = {}
+    en_articles = {}
     pillars_count = 0
     cloud_pillars_count = 0
 
@@ -64,14 +97,14 @@ def main():
     if tr_articles_file.exists():
         try:
             with open(tr_articles_file, "r", encoding="utf-8") as f:
-                tr_articles_count = len(json.load(f))
+                tr_articles = json.load(f)
         except Exception:
             pass
 
     if en_articles_file.exists():
         try:
             with open(en_articles_file, "r", encoding="utf-8") as f:
-                en_articles_count = len(json.load(f))
+                en_articles = json.load(f)
         except Exception:
             pass
 
@@ -84,10 +117,11 @@ def main():
         except Exception:
             pass
 
-    # 2. Komut Kataloğunu Oku
+    # 2. Komut Kataloğu ve Dağılımı
     commands_count = 0
     cat_summary = {}
     top_tools = {}
+    sample_commands = []
 
     commands_file = ASSETS_DIR / "commands_catalog.json"
     if commands_file.exists():
@@ -106,12 +140,18 @@ def main():
                     tool = c.get("tool", "").lower()
                     if tool:
                         top_tools[tool] = top_tools.get(tool, 0) + 1
+
+                # Örnek son komutlar
+                sample_commands = commands_list[-8:] if len(commands_list) >= 8 else commands_list
         except Exception:
             pass
 
     sorted_tools = sorted(top_tools.items(), key=lambda x: x[1], reverse=True)[:10]
 
-    # 3. Upstream Repolardan Senkronizasyon Durumu
+    # 3. Dosya ve Doküman Değişikliklerini Tespit Et
+    added_files, modified_files = get_git_diff_summary()
+
+    # 4. Upstream Kaynak Commitleri
     sources_dir = BASE_DIR / "sources"
     sync_info = {
         "HackTricks Main (EN)": get_git_recent_commits(sources_dir / "hacktricks-en", 3),
@@ -120,7 +160,7 @@ def main():
         "HackTricks Cloud (TR)": get_git_recent_commits(sources_dir / "hacktricks-cloud-tr", 2),
     }
 
-    # 4. Markdown Notunu Oluştur
+    # 5. Sürüm Notu Markdown Oluşturma
     lines = [
         f"## 🛡️ HackTricks Vault — Otomatik Üretim Sürümü",
         f"",
@@ -129,13 +169,46 @@ def main():
         f"",
         f"---",
         f"",
+        f"### 📋 Bu Sürümde Neler Değişti? (Dosya & Komut Detayları)",
+    ]
+
+    # Eklenen ve Güncellenen Dosyalar Dökümü
+    doc_changes = [f for f in (added_files + modified_files) if f.endswith('.md') or 'articles' in f or 'commands' in f]
+    if doc_changes:
+        lines.append("#### 📝 Etkilenen / Güncellenen Dosyalar:")
+        for df in doc_changes[:15]:
+            icon = "➕" if df in added_files else "🔄"
+            lines.append(f"- {icon} `{df}`")
+        if len(doc_changes) > 15:
+            lines.append(f"- *... ve {len(doc_changes) - 15} dosya daha güncellendi.*")
+        lines.append("")
+    else:
+        lines.append("- ℹ️ *Bu otomatik derlemede upstream repolardan doğrudan tüm en güncel commitler derlenip APK içine gömüldü.*")
+        lines.append("")
+
+    # Eklenen / Mevcut Operasyonel Komutlardan Canlı Örnekler
+    if sample_commands:
+        lines.append("#### ⚡ Öne Çıkan / Aktif Pentest Komutları:")
+        for sc in sample_commands[:6]:
+            t = sc.get('tool', '').upper()
+            title = sc.get('title', '')
+            raw_c = sc.get('template', sc.get('raw_command', ''))
+            if len(raw_c) > 95:
+                raw_c = raw_c[:92] + "..."
+            lines.append(f"- **`{t}`** — *{title}*")
+            lines.append(f"  ```bash\n  {raw_c}\n  ```")
+        lines.append("")
+
+    lines.extend([
+        f"---",
+        f"",
         f"### 📊 Genel Veritabanı ve Cephanelik İstatistikleri",
-        f"- **📚 Dokümantasyon:** Toplam **{tr_articles_count:,} Türkçe** + **{en_articles_count:,} İngilizce** tam metin makale.".replace(",", "."),
+        f"- **📚 Dokümantasyon:** Toplam **{len(tr_articles):,} Türkçe** + **{len(en_articles):,} İngilizce** tam metin makale.".replace(",", "."),
         f"- **🗂️ Güvenlik Kategorileri:** **{pillars_count} Ana Kategori** ({cloud_pillars_count} Bulut & Konteyner mimarisi dahil).",
         f"- **⚡ Canlı Pentest Komutları:** **{commands_count:,} adet** operasyonel, canlı parametrelendirilebilir komut.".replace(",", "."),
         f"",
         f"#### 🎯 Komut Cephaneliği Dağılımı:"
-    ]
+    ])
 
     for cat_name, count in sorted(cat_summary.items(), key=lambda x: x[1], reverse=True):
         lines.append(f"- • **{cat_name}:** {count:,} komut".replace(",", "."))
@@ -149,20 +222,14 @@ def main():
     lines.append("")
     lines.append("---")
     lines.append("")
-    lines.append("### 🔄 Upstream Kaynak Senkronizasyonu (En Son Gelen Güncellemeler)")
+    lines.append("### 🔄 Upstream Kaynak Senkronizasyonu (En Son Gelen Commit'ler)")
 
-    has_upstream_logs = False
     for repo_name, commits in sync_info.items():
         if commits:
-            has_upstream_logs = True
             lines.append(f"**{repo_name}:**")
             for c in commits:
                 lines.append(f"- `{c}`")
             lines.append("")
-
-    if not has_upstream_logs:
-        lines.append("- Upstream repolar yerel önbellekten veya en güncel `master/tr` dallarından derlendi.")
-        lines.append("")
 
     lines.append("---")
     lines.append("")
@@ -180,8 +247,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"[✓] Sürüm notu başarıyla üretildi: {OUTPUT_FILE}")
-    print(f"    Doküman: {tr_articles_count} | Komut: {commands_count}")
+    print(f"[✓] Detaylı sürüm notu başarıyla üretildi: {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
