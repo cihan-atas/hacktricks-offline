@@ -53,6 +53,7 @@ jobs:
           fi
           python3 ./scripts/build_hacktricks_content.py
           python3 ./scripts/extract_hacktricks_commands.py
+          python3 ./scripts/generate_release_notes.py
 
       - name: Build Flutter APK
         run: |
@@ -72,20 +73,28 @@ jobs:
           path: HackTricks-Vault-*.apk
           retention-days: 30
 
-      - name: Create Release
+      - name: Create Release with Dynamic Changelog
         if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.ref == 'refs/heads/main'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v2.0.${{ github.run_number }}
-          name: HackTricks Vault v2.0.${{ github.run_number }} (AI & TTS)
-          body: |
-            Yeni Nesil HackTricks Vault Android Uygulaması!
-            - ⚡ Arsenal: Canlı Parametreli Pentest Komut Oluşturucu (590+ Komut, 6 Kategori)
-            - 🎨 Modern Cyber Dark Mobil Tasarım
-            - 🔊 Floating TTS Ses Motoru (Türkçe & İngilizce)
-            - ✨ AI Siber Güvenlik Asistanı (Gemini / Groq / OpenRouter)
-            - 🇹🇷 Türkçe ve 🇬🇧 İngilizce Çift Dil Arşivi (2.260+ Doküman)
-            - 📅 Derleme Tarihi: $(date +'%Y-%m-%d')
+          name: HackTricks Vault v2.0.${{ github.run_number }} (Offline Vault)
+          body_path: RELEASE_NOTES.md
           files: HackTricks-Vault-*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cleanup Older Releases (Keep Only Latest)
+        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule' || github.ref == 'refs/heads/main'
+        run: |
+          echo "Checking and deleting older releases..."
+          CURRENT_TAG="v2.0.${{ github.run_number }}"
+          # Mevcut sürüm dışındaki tüm eski sürümleri sil
+          gh release list --limit 100 --json tagName -q '.[].tagName' | while read -r tag; do
+            if [ "$tag" != "$CURRENT_TAG" ] && [ -n "$tag" ]; then
+              echo "Deleting old release $tag..."
+              gh release delete "$tag" --yes --cleanup-tag || true
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
